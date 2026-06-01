@@ -1,34 +1,37 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Tabs } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
 import { BlurView } from 'expo-blur';
-import TabBarBackground from '@/components/ui/tab-bar-background';
-
-type TabBarBgComponent = React.ComponentType | undefined;
-const TabBarBg = TabBarBackground as TabBarBgComponent;
 
 export default function GlassTabsLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Platform.OS === 'ios' ? '#ffffff' : '#6366f1',
-        tabBarInactiveTintColor: Platform.OS === 'ios' ? 'rgba(255,255,255,0.5)' : undefined,
-        tabBarStyle: Platform.OS === 'ios'
-          ? { position: 'absolute', borderTopWidth: 0, elevation: 0, backgroundColor: 'transparent' }
-          : undefined,
-        tabBarBackground: () => TabBarBg ? <TabBarBg /> : null,
-        headerTransparent: Platform.OS === 'ios',
-        headerBackground: () =>
-          Platform.OS === 'ios' ? (
-            <BlurView
-              tint="systemChromeMaterial"
-              intensity={100}
-              style={StyleSheet.absoluteFill}
-            />
-          ) : null,
-        headerStyle: Platform.OS === 'ios'
-          ? { backgroundColor: 'transparent' }
-          : undefined,
+        tabBarActiveTintColor: '#ffffff',
+        tabBarInactiveTintColor: 'rgba(255,255,255,0.5)',
+        tabBarStyle: {
+          position: 'absolute',
+          borderTopWidth: 0,
+          elevation: 0,
+          backgroundColor: 'transparent',
+        },
+        tabBarBackground: () => (
+          <BlurView
+            tint="systemChromeMaterial"
+            intensity={100}
+            style={StyleSheet.absoluteFill}
+          />
+        ),
+        headerTransparent: true,
+        headerStyle: { backgroundColor: 'transparent' },
+        headerBackground: () => (
+          <BlurView
+            tint="systemChromeMaterial"
+            intensity={100}
+            style={StyleSheet.absoluteFill}
+          />
+        ),
+        headerTintColor: '#ffffff',
         headerShadowVisible: false,
       }}
     >
