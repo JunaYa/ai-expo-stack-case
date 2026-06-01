@@ -1,10 +1,102 @@
 import { View, Text } from 'react-native';
+import { Link } from 'expo-router';
+import { useColorScheme } from 'nativewind';
+import { HStack } from '@/components/ui/hstack';
+import { VStack } from '@/components/ui/vstack';
+import { Badge, BadgeText } from '@/components/ui/badge';
+import { Button, ButtonText } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Heading } from '@/components/ui/heading';
+import { Divider } from '@/components/ui/divider';
+
+function ThemeToggle() {
+  const { colorScheme, setColorScheme } = useColorScheme();
+
+  const modes = ['light', 'dark', 'system'] as const;
+
+  return (
+    <VStack className="gap-2">
+      <Text className="text-sm font-medium text-typography-600">Theme</Text>
+      <HStack className="gap-2">
+        {modes.map((mode) => (
+          <Button
+            key={mode}
+            size="sm"
+            variant={colorScheme === mode ? 'solid' : 'outline'}
+            action="primary"
+            onPress={() => setColorScheme(mode)}
+          >
+            <ButtonText className="capitalize">{mode}</ButtonText>
+          </Button>
+        ))}
+      </HStack>
+    </VStack>
+  );
+}
+
+function StackBadges() {
+  const stack = ['Expo 56', 'NativeWind v4', 'gluestack-ui v3'];
+  return (
+    <HStack className="flex-wrap gap-2">
+      {stack.map((item) => (
+        <Badge key={item} size="lg" variant="solid" action="info">
+          <BadgeText>{item}</BadgeText>
+        </Badge>
+      ))}
+    </HStack>
+  );
+}
 
 export default function HomeScreen() {
   return (
-    <View className="flex-1 items-center justify-center bg-background-0">
-      <Text className="text-xl font-bold text-typography-900">Home</Text>
-      <Text className="mt-2 text-typography-500">Expo Stack App</Text>
+    <View className="flex-1 bg-background-0 px-6 pt-12">
+      <VStack className="gap-6">
+        <VStack className="gap-1">
+          <Heading size="2xl">Expo Stack App</Heading>
+          <Text className="text-base text-typography-500">
+            UI tech stack scaffold &amp; component preview
+          </Text>
+        </VStack>
+
+        <StackBadges />
+
+        <Divider />
+
+        <ThemeToggle />
+
+        <Divider />
+
+        <VStack className="gap-3">
+          <Text className="text-sm font-medium text-typography-600">
+            Navigate
+          </Text>
+          <Link href="/showcase" asChild>
+            <Card size="md" variant="elevated" className="active:opacity-80">
+              <VStack className="gap-1">
+                <Text className="text-base font-semibold text-typography-900">
+                  Component Showcase
+                </Text>
+                <Text className="text-sm text-typography-500">
+                  Browse all gluestack-ui components with interactive demos
+                </Text>
+              </VStack>
+            </Card>
+          </Link>
+
+          <Link href="/modal" asChild>
+            <Card size="md" variant="elevated" className="active:opacity-80">
+              <VStack className="gap-1">
+                <Text className="text-base font-semibold text-typography-900">
+                  Modal Example
+                </Text>
+                <Text className="text-sm text-typography-500">
+                  Native modal presentation with gluestack Modal component
+                </Text>
+              </VStack>
+            </Card>
+          </Link>
+        </VStack>
+      </VStack>
     </View>
   );
 }
