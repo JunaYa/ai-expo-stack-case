@@ -68,29 +68,64 @@ export default function HomeScreen() {
 
         <VStack className="gap-3">
           <Text className="text-sm font-medium text-typography-600">
-            Navigate
+            Showcase Tabs
           </Text>
-          <Link href="/showcase" asChild>
+          <Link href="/base" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
                 <Text className="text-base font-semibold text-typography-900">
-                  Component Showcase
+                  Base
                 </Text>
                 <Text className="text-sm text-typography-500">
-                  Browse all gluestack-ui components with interactive demos
+                  Typography, badges, cards, layout &amp; media
                 </Text>
               </VStack>
             </Card>
           </Link>
-
-          <Link href="/modal" asChild>
+          <Link href="/forms" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
                 <Text className="text-base font-semibold text-typography-900">
-                  Modal Example
+                  Forms
                 </Text>
                 <Text className="text-sm text-typography-500">
-                  Native modal presentation with gluestack Modal component
+                  Buttons, inputs &amp; form controls
+                </Text>
+              </VStack>
+            </Card>
+          </Link>
+          <Link href="/feedback" asChild>
+            <Card size="md" variant="elevated" className="active:opacity-80">
+              <VStack className="gap-1">
+                <Text className="text-base font-semibold text-typography-900">
+                  Feedback
+                </Text>
+                <Text className="text-sm text-typography-500">
+                  Alerts, progress, toasts &amp; loading states
+                </Text>
+              </VStack>
+            </Card>
+          </Link>
+          <Link href="/overlays" asChild>
+            <Card size="md" variant="elevated" className="active:opacity-80">
+              <VStack className="gap-1">
+                <Text className="text-base font-semibold text-typography-900">
+                  Overlays
+                </Text>
+                <Text className="text-sm text-typography-500">
+                  Modals, dialogs, sheets &amp; disclosure
+                </Text>
+              </VStack>
+            </Card>
+          </Link>
+          <Link href="/modal" asChild>
+            <Card size="md" variant="outline" className="active:opacity-80">
+              <VStack className="gap-1">
+                <Text className="text-base font-semibold text-typography-900">
+                  Modal (Route)
+                </Text>
+                <Text className="text-sm text-typography-500">
+                  Native modal presentation via Expo Router
                 </Text>
               </VStack>
             </Card>
