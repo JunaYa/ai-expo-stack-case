@@ -8,9 +8,12 @@
     "scheme": "expostackapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.streamify.expostackapp",
+      "appleTeamId": "H44V3ZZF75"
     },
     "android": {
+      "package": "com.streamify.expostackapp",
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
