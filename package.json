@@ -12,6 +12,7 @@
     "expo-blur": "~56.0.3",
     "expo-constants": "~56.0.16",
     "expo-font": "~56.0.5",
+    "expo-glass-effect": "~56.0.4",
     "expo-linking": "~56.0.13",
     "expo-router": "~56.2.8",
     "expo-splash-screen": "~56.0.10",
@@ -42,9 +43,9 @@
     "typescript": "~6.0.3"
   },
   "scripts": {
-    "start": "expo start",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
+    "start": "expo start --port 8090",
+    "android": "expo run:android --port 8090",
+    "ios": "expo run:ios --port 8090 --device 8E9E3D66-8CC2-4C8B-98A1-4DFFB742B3E5",
     "web": "expo start --web",
     "clear": "expo start --clear"
   },
