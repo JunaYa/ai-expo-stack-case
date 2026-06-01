@@ -1,67 +1,24 @@
-import { StyleSheet } from 'react-native';
-import { Tabs } from 'expo-router';
-import { SymbolView } from 'expo-symbols';
-import { BlurView } from 'expo-blur';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
 
 export default function GlassTabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: '#ffffff',
-        tabBarInactiveTintColor: 'rgba(255,255,255,0.5)',
-        tabBarStyle: {
-          position: 'absolute',
-          borderTopWidth: 0,
-          elevation: 0,
-          backgroundColor: 'transparent',
-        },
-        tabBarBackground: () => (
-          <BlurView
-            tint="systemChromeMaterial"
-            intensity={100}
-            style={StyleSheet.absoluteFill}
-          />
-        ),
-        headerTransparent: true,
-        headerStyle: { backgroundColor: 'transparent' },
-        headerBackground: () => (
-          <BlurView
-            tint="systemChromeMaterial"
-            intensity={100}
-            style={StyleSheet.absoluteFill}
-          />
-        ),
-        headerTintColor: '#ffffff',
-        headerShadowVisible: false,
-      }}
+    <NativeTabs
+      blurEffect="systemChromeMaterial"
+      backgroundColor="transparent"
+      shadowColor="transparent"
     >
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'house', android: 'home', web: 'home' }} tintColor={color} size={22} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="search"
-        options={{
-          title: 'Search',
-          tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }} tintColor={color} size={22} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile"
-        options={{
-          title: 'Profile',
-          tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'person', android: 'person', web: 'person' }} tintColor={color} size={22} />
-          ),
-        }}
-      />
-    </Tabs>
+      <NativeTabs.Trigger name="home">
+        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="house.fill" drawable="home" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="search">
+        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="magnifyingglass" drawable="search" />
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="profile">
+        <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon sf="person.fill" drawable="person" />
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
