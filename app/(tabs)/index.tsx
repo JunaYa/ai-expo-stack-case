@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { ScrollView, View, Text } from 'react-native';
 import { Link } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import { HStack } from '@/components/ui/hstack';
@@ -49,7 +49,11 @@ function StackBadges() {
 
 export default function HomeScreen() {
   return (
-    <View className="flex-1 bg-background-0 px-6 pt-12">
+    <ScrollView
+      className="flex-1 bg-background-0"
+      contentContainerClassName="px-6 pb-24 pt-12"
+      showsVerticalScrollIndicator={false}
+    >
       <VStack className="gap-6">
         <VStack className="gap-1">
           <Heading size="2xl">Expo Stack App</Heading>
@@ -118,6 +122,31 @@ export default function HomeScreen() {
               </VStack>
             </Card>
           </Link>
+        </VStack>
+
+        <Divider />
+
+        <VStack className="gap-3">
+          <Text className="text-sm font-medium text-typography-600">
+            Tab Layouts
+          </Text>
+          <Link href="/tab-showcase" asChild>
+            <Card size="md" variant="elevated" className="active:opacity-80">
+              <HStack className="items-center gap-3">
+                <Badge size="lg" action="success" variant="solid">
+                  <BadgeText>7</BadgeText>
+                </Badge>
+                <VStack className="flex-1 gap-1">
+                  <Text className="text-base font-semibold text-typography-900">
+                    Tab Layout Showcase
+                  </Text>
+                  <Text className="text-sm text-typography-500">
+                    2/3/4/5 tabs, center FAB, split center, iOS glass effect
+                  </Text>
+                </VStack>
+              </HStack>
+            </Card>
+          </Link>
           <Link href="/modal" asChild>
             <Card size="md" variant="outline" className="active:opacity-80">
               <VStack className="gap-1">
@@ -132,6 +161,6 @@ export default function HomeScreen() {
           </Link>
         </VStack>
       </VStack>
-    </View>
+    </ScrollView>
   );
 }
