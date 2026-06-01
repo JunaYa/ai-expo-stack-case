@@ -49,6 +49,12 @@ const layouts = [
     desc: 'iOS-style translucent blur tab bar',
     badge: 'Blur',
   },
+  {
+    href: '/tab-showcase/(glass-pill)',
+    title: 'Glass Pill + Action',
+    desc: 'Floating glass tab pill with a separate action button',
+    badge: 'Glass',
+  },
 ] as const;
 
 export default function TabShowcaseIndex() {

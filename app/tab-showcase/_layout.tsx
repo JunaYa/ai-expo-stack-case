@@ -11,6 +11,7 @@ export default function TabShowcaseLayout() {
       <Stack.Screen name="(center-fab)" options={{ headerShown: false }} />
       <Stack.Screen name="(split-center)" options={{ headerShown: false }} />
       <Stack.Screen name="(glass-tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="(glass-pill)" options={{ headerShown: false }} />
     </Stack>
   );
 }
