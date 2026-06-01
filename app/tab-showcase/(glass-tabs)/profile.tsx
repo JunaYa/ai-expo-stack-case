@@ -1,5 +1,5 @@
-import { TabPlaceholder } from '@/components/showcase/tab-placeholder';
+import { GlassTabContent } from '@/components/showcase/glass-tab-content';
 
 export default function ProfileScreen() {
-  return <TabPlaceholder title="Profile" />;
+  return <GlassTabContent title="Profile" />;
 }

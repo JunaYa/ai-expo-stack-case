@@ -8,33 +8,29 @@ export default function GlassTabsLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#ffffff',
-        tabBarInactiveTintColor: 'rgba(255,255,255,0.5)',
+        tabBarInactiveTintColor: 'rgba(255,255,255,0.6)',
         tabBarStyle: {
           position: 'absolute',
           borderTopWidth: 0,
           elevation: 0,
-          backgroundColor: Platform.OS === 'ios' ? 'transparent' : 'rgba(0,0,0,0.8)',
+          backgroundColor: 'transparent',
         },
-        tabBarBackground: () =>
-          Platform.OS === 'ios' ? (
-            <BlurView
-              intensity={80}
-              tint="systemChromeMaterialDark"
-              style={StyleSheet.absoluteFill}
-            />
-          ) : null,
-        headerStyle: {
-          backgroundColor: Platform.OS === 'ios' ? 'transparent' : 'rgba(0,0,0,0.9)',
-        },
-        headerTransparent: Platform.OS === 'ios',
-        headerBackground: () =>
-          Platform.OS === 'ios' ? (
-            <BlurView
-              intensity={80}
-              tint="systemChromeMaterialDark"
-              style={StyleSheet.absoluteFill}
-            />
-          ) : null,
+        tabBarBackground: () => (
+          <BlurView
+            intensity={100}
+            tint="systemChromeMaterialDark"
+            style={StyleSheet.absoluteFill}
+          />
+        ),
+        headerStyle: { backgroundColor: 'transparent' },
+        headerTransparent: true,
+        headerBackground: () => (
+          <BlurView
+            intensity={100}
+            tint="systemChromeMaterialDark"
+            style={StyleSheet.absoluteFill}
+          />
+        ),
         headerTintColor: '#ffffff',
         headerShadowVisible: false,
       }}
