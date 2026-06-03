@@ -34,7 +34,7 @@ const TEXT_SIZES: { label: string; value: TextSize; scale: number }[] = [
 ];
 
 const FONTS: { label: string; value: FontFamily; family: string | undefined }[] = [
-  { label: 'System', value: 'system', family: undefined },
+  { label: 'Sans', value: 'system', family: undefined },
   { label: 'Serif', value: 'serif', family: 'serif' },
   { label: 'Mono', value: 'mono', family: 'monospace' },
 ];
@@ -263,17 +263,50 @@ export default function SettingsScreen() {
 
       <View style={{ gap: 6 }}>
         <SectionHeader title="Font" />
-        <OptionRow>
-          {FONTS.map(f => (
-            <Chip
-              key={f.value}
-              label={f.label}
-              selected={font === f.value}
-              onPress={() => setFont(f.value)}
-              radius={currentRadius}
-            />
-          ))}
-        </OptionRow>
+        <View style={{ flexDirection: 'row', gap: 10 }}>
+          {FONTS.map(f => {
+            const selected = font === f.value;
+            return (
+              <Pressable
+                key={f.value}
+                onPress={() => setFont(f.value)}
+                style={({ pressed }) => ({
+                  alignItems: 'center',
+                  backgroundColor: selected ? '#eef2ff' : '#f9fafb',
+                  borderColor: selected ? '#6366f1' : '#e5e7eb',
+                  borderRadius: currentRadius,
+                  borderWidth: selected ? 2 : 1,
+                  flex: 1,
+                  gap: 6,
+                  opacity: pressed ? 0.7 : 1,
+                  paddingBottom: 10,
+                  paddingTop: 16,
+                })}
+              >
+                <Text
+                  style={{
+                    color: '#374151',
+                    fontFamily: f.family,
+                    fontSize: 28,
+                    fontWeight: '400',
+                    lineHeight: 34,
+                  }}
+                >
+                  Ag
+                </Text>
+                <Text
+                  style={{
+                    color: selected ? '#6366f1' : '#9ca3af',
+                    fontSize: 13,
+                    fontWeight: '600',
+                  }}
+                >
+                  {f.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
       </View>
 
       <View style={{ gap: 6 }}>
