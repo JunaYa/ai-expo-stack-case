@@ -36,9 +36,12 @@
     "tailwind-variants": "^0.1.20"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
     "@types/react": "~19.2.2",
     "babel-plugin-module-resolver": "^5.0.3",
+    "lint-staged": "^17.0.7",
     "prettier-plugin-tailwindcss": "^0.5.14",
+    "simple-git-hooks": "^2.13.1",
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.3"
   },
@@ -47,7 +50,18 @@
     "android": "expo run:android --port 8090",
     "ios": "expo run:ios --port 8090 --device 8E9E3D66-8CC2-4C8B-98A1-4DFFB742B3E5",
     "web": "expo start --web",
-    "clear": "expo start --clear"
+    "clear": "expo start --clear",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "prepare": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "biome check --write --no-errors-on-unmatched",
+    "*.json": "biome format --write --no-errors-on-unmatched"
   },
   "private": true
 }

@@ -1,15 +1,14 @@
-import { View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import { Platform } from 'react-native';
 import { router } from 'expo-router';
-import { VStack } from '@/components/ui/vstack';
-import { HStack } from '@/components/ui/hstack';
-import { Heading } from '@/components/ui/heading';
-import { Text } from '@/components/ui/text';
-import { Button, ButtonText } from '@/components/ui/button';
-import { Divider } from '@/components/ui/divider';
-import { Card } from '@/components/ui/card';
+import { StatusBar } from 'expo-status-bar';
+import { Platform, View } from 'react-native';
 import { Badge, BadgeText } from '@/components/ui/badge';
+import { Button, ButtonText } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Divider } from '@/components/ui/divider';
+import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
+import { Text } from '@/components/ui/text';
+import { VStack } from '@/components/ui/vstack';
 
 export default function ModalScreen() {
   return (
@@ -26,13 +25,16 @@ export default function ModalScreen() {
           <VStack className="gap-3">
             <Heading size="md">Implementation Details</Heading>
             <Text size="sm">
-              This screen uses Expo Router's native modal presentation. The
-              modal slides up from the bottom on iOS and uses the platform's
-              default modal animation on Android.
+              This screen uses Expo Router's native modal presentation. The modal slides up from the
+              bottom on iOS and uses the platform's default modal animation on Android.
             </Text>
             <HStack className="flex-wrap gap-2">
-              <Badge action="info"><BadgeText>Stack.Screen</BadgeText></Badge>
-              <Badge action="info"><BadgeText>presentation: modal</BadgeText></Badge>
+              <Badge action="info">
+                <BadgeText>Stack.Screen</BadgeText>
+              </Badge>
+              <Badge action="info">
+                <BadgeText>presentation: modal</BadgeText>
+              </Badge>
             </HStack>
           </VStack>
         </Card>

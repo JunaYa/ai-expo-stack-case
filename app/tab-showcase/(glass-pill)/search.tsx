@@ -15,16 +15,16 @@ export default function SearchScreen() {
         <Text style={styles.eyebrow}>Discover</Text>
         <Text style={styles.title}>Search</Text>
         <Text style={styles.subtitle}>
-          This tab uses role="search" to get the separate right-side Liquid
-          Glass pill treatment that iOS 26 reserves for the search slot.
+          This tab uses role="search" to get the separate right-side Liquid Glass pill treatment
+          that iOS 26 reserves for the search slot.
         </Text>
       </View>
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>How it works</Text>
         <Text style={styles.cardBody}>
-          NativeTabs.Trigger with role="search" renders as an independent pill,
-          visually separated from the grouped tab bar.
+          NativeTabs.Trigger with role="search" renders as an independent pill, visually separated
+          from the grouped tab bar.
         </Text>
       </View>
     </ScrollView>

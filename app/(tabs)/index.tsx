@@ -1,13 +1,13 @@
-import { ScrollView, View, Text } from 'react-native';
 import { Link } from 'expo-router';
 import { useColorScheme } from 'nativewind';
-import { HStack } from '@/components/ui/hstack';
-import { VStack } from '@/components/ui/vstack';
+import { ScrollView, Text } from 'react-native';
 import { Badge, BadgeText } from '@/components/ui/badge';
 import { Button, ButtonText } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Heading } from '@/components/ui/heading';
 import { Divider } from '@/components/ui/divider';
+import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
+import { VStack } from '@/components/ui/vstack';
 
 function ThemeToggle() {
   const { colorScheme, setColorScheme } = useColorScheme();
@@ -71,15 +71,11 @@ export default function HomeScreen() {
         <Divider />
 
         <VStack className="gap-3">
-          <Text className="text-sm font-medium text-typography-600">
-            Showcase Tabs
-          </Text>
+          <Text className="text-sm font-medium text-typography-600">Showcase Tabs</Text>
           <Link href="/base" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">
-                  Base
-                </Text>
+                <Text className="text-base font-semibold text-typography-900">Base</Text>
                 <Text className="text-sm text-typography-500">
                   Typography, badges, cards, layout &amp; media
                 </Text>
@@ -89,9 +85,7 @@ export default function HomeScreen() {
           <Link href="/forms" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">
-                  Forms
-                </Text>
+                <Text className="text-base font-semibold text-typography-900">Forms</Text>
                 <Text className="text-sm text-typography-500">
                   Buttons, inputs &amp; form controls
                 </Text>
@@ -101,9 +95,7 @@ export default function HomeScreen() {
           <Link href="/feedback" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">
-                  Feedback
-                </Text>
+                <Text className="text-base font-semibold text-typography-900">Feedback</Text>
                 <Text className="text-sm text-typography-500">
                   Alerts, progress, toasts &amp; loading states
                 </Text>
@@ -113,9 +105,7 @@ export default function HomeScreen() {
           <Link href="/overlays" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">
-                  Overlays
-                </Text>
+                <Text className="text-base font-semibold text-typography-900">Overlays</Text>
                 <Text className="text-sm text-typography-500">
                   Modals, dialogs, sheets &amp; disclosure
                 </Text>
@@ -127,9 +117,7 @@ export default function HomeScreen() {
         <Divider />
 
         <VStack className="gap-3">
-          <Text className="text-sm font-medium text-typography-600">
-            Tab Layouts
-          </Text>
+          <Text className="text-sm font-medium text-typography-600">Tab Layouts</Text>
           <Link href="/tab-showcase" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <HStack className="items-center gap-3">
@@ -150,9 +138,7 @@ export default function HomeScreen() {
           <Link href="/modal" asChild>
             <Card size="md" variant="outline" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">
-                  Modal (Route)
-                </Text>
+                <Text className="text-base font-semibold text-typography-900">Modal (Route)</Text>
                 <Text className="text-sm text-typography-500">
                   Native modal presentation via Expo Router
                 </Text>

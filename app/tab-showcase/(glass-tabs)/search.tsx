@@ -1,9 +1,9 @@
-import { View, Text as RNText, ScrollView } from 'react-native';
-import { VStack } from '@/components/ui/vstack';
-import { HStack } from '@/components/ui/hstack';
-import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
+import { Text as RNText, ScrollView, View } from 'react-native';
 import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
 import { SearchIcon } from '@/components/ui/icon';
+import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
+import { VStack } from '@/components/ui/vstack';
 
 const CATEGORIES = [
   { emoji: '🎨', label: 'Design', count: 12, color: 'bg-pink-500/20' },
@@ -14,7 +14,12 @@ const CATEGORIES = [
   { emoji: '📱', label: 'Mobile', count: 9, color: 'bg-cyan-500/20' },
 ];
 
-const RECENT = ['Tab navigation patterns', 'Glass morphism UI', 'Expo Router v4', 'NativeWind setup'];
+const RECENT = [
+  'Tab navigation patterns',
+  'Glass morphism UI',
+  'Expo Router v4',
+  'NativeWind setup',
+];
 
 export default function SearchScreen() {
   return (
@@ -28,12 +33,18 @@ export default function SearchScreen() {
           <InputSlot className="pl-3">
             <InputIcon as={SearchIcon} className="text-white/40" />
           </InputSlot>
-          <InputField placeholder="Search components..." placeholderTextColor="rgba(255,255,255,0.3)" className="text-white" />
+          <InputField
+            placeholder="Search components..."
+            placeholderTextColor="rgba(255,255,255,0.3)"
+            className="text-white"
+          />
         </Input>
       </View>
 
       <View className="mx-0 mb-6 overflow-hidden rounded-2xl bg-white/10 p-5">
-        <Heading size="sm" className="mb-3 text-white/70">Categories</Heading>
+        <Heading size="sm" className="mb-3 text-white/70">
+          Categories
+        </Heading>
         <VStack className="gap-2">
           {CATEGORIES.map((cat) => (
             <HStack key={cat.label} className={`items-center gap-3 rounded-xl ${cat.color} p-3`}>
@@ -46,7 +57,9 @@ export default function SearchScreen() {
       </View>
 
       <View className="mx-0 mb-6 overflow-hidden rounded-2xl bg-white/10 p-5">
-        <Heading size="sm" className="mb-3 text-white/70">Recent Searches</Heading>
+        <Heading size="sm" className="mb-3 text-white/70">
+          Recent Searches
+        </Heading>
         <VStack className="gap-2">
           {RECENT.map((item) => (
             <HStack key={item} className="items-center gap-2 py-1.5">

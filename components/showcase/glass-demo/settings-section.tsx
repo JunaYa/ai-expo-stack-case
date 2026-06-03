@@ -1,12 +1,20 @@
-import { View, Text as RNText } from 'react-native';
-import { useGlassDemo } from './context';
-import { HStack } from '@/components/ui/hstack';
-import { VStack } from '@/components/ui/vstack';
-import { Switch } from '@/components/ui/switch';
-import { Heading } from '@/components/ui/heading';
+import { Text as RNText, View } from 'react-native';
 import { Divider } from '@/components/ui/divider';
+import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
+import { Switch } from '@/components/ui/switch';
+import { VStack } from '@/components/ui/vstack';
+import { useGlassDemo } from './context';
 
-function SettingRow({ label, value, onToggle }: { label: string; value: boolean; onToggle: (v: boolean) => void }) {
+function SettingRow({
+  label,
+  value,
+  onToggle,
+}: {
+  label: string;
+  value: boolean;
+  onToggle: (v: boolean) => void;
+}) {
   return (
     <HStack className="items-center justify-between py-2">
       <RNText className="text-sm text-white/80">{label}</RNText>
@@ -20,7 +28,9 @@ export function SettingsSection() {
 
   return (
     <View className="mx-4 mb-6 overflow-hidden rounded-2xl bg-white/10 p-5">
-      <Heading size="md" className="mb-4 text-white">Settings</Heading>
+      <Heading size="md" className="mb-4 text-white">
+        Settings
+      </Heading>
 
       <VStack>
         <SettingRow

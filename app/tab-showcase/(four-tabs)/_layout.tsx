@@ -9,7 +9,11 @@ export default function FourTabsLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'house', android: 'home', web: 'home' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'house', android: 'home', web: 'home' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
@@ -18,7 +22,11 @@ export default function FourTabsLayout() {
         options={{
           title: 'Search',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
@@ -27,7 +35,11 @@ export default function FourTabsLayout() {
         options={{
           title: 'Alerts',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'bell', android: 'notifications', web: 'notifications' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'bell', android: 'notifications', web: 'notifications' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
@@ -36,7 +48,11 @@ export default function FourTabsLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'person', android: 'person', web: 'person' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'person', android: 'person', web: 'person' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />

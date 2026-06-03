@@ -1,7 +1,7 @@
-import { View, Text } from 'react-native';
 import { usePathname } from 'expo-router';
-import { VStack } from '@/components/ui/vstack';
+import { Text, View } from 'react-native';
 import { Heading } from '@/components/ui/heading';
+import { VStack } from '@/components/ui/vstack';
 
 export function TabPlaceholder({ title }: { title: string }) {
   const pathname = usePathname();

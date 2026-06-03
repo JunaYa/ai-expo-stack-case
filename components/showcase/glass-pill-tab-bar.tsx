@@ -1,11 +1,11 @@
 import { BlurView } from 'expo-blur';
 import { GlassView, isGlassEffectAPIAvailable } from 'expo-glass-effect';
 import { router } from 'expo-router';
+import type { BottomTabBarProps } from 'expo-router/build/react-navigation/bottom-tabs';
 import { BookText, Music, Search, UsersRound } from 'lucide-react-native';
 import type { ReactNode } from 'react';
-import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import type { StyleProp, ViewStyle } from 'react-native';
-import type { BottomTabBarProps } from 'expo-router/build/react-navigation/bottom-tabs';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const IS_IOS = Platform.OS === 'ios';
 const GLASS_AVAILABLE = IS_IOS && isGlassEffectAPIAvailable();
@@ -18,12 +18,7 @@ type GlassSurfaceProps = {
   style: StyleProp<ViewStyle>;
 };
 
-export function GlassPillTabBar({
-  descriptors,
-  insets,
-  navigation,
-  state,
-}: BottomTabBarProps) {
+export function GlassPillTabBar({ descriptors, insets, navigation, state }: BottomTabBarProps) {
   return (
     <View
       pointerEvents="box-none"
@@ -57,10 +52,7 @@ export function GlassPillTabBar({
                   accessibilityState={focused ? { selected: true } : undefined}
                   key={route.key}
                   onPress={onPress}
-                  style={({ pressed }) => [
-                    styles.tabButton,
-                    { opacity: pressed ? 0.72 : 1 },
-                  ]}
+                  style={({ pressed }) => [styles.tabButton, { opacity: pressed ? 0.72 : 1 }]}
                 >
                   {focused ? <View style={styles.selectedTab} /> : null}
                   <View style={styles.iconWrap}>
@@ -89,10 +81,7 @@ export function GlassPillTabBar({
             accessibilityLabel="Open modal"
             accessibilityRole="button"
             onPress={() => router.push('/modal')}
-            style={({ pressed }) => [
-              styles.searchPressable,
-              { opacity: pressed ? 0.72 : 1 },
-            ]}
+            style={({ pressed }) => [styles.searchPressable, { opacity: pressed ? 0.72 : 1 }]}
           >
             <Search color={INACTIVE_COLOR} size={34} strokeWidth={2.1} />
           </Pressable>
@@ -120,11 +109,7 @@ function GlassSurface({ children, interactive, style }: GlassSurfaceProps) {
   return (
     <View style={[style, styles.fallbackSurface]}>
       {IS_IOS ? (
-        <BlurView
-          intensity={72}
-          style={StyleSheet.absoluteFill}
-          tint="systemChromeMaterialLight"
-        />
+        <BlurView intensity={72} style={StyleSheet.absoluteFill} tint="systemChromeMaterialLight" />
       ) : null}
       <View style={styles.fallbackTint} />
       {children}

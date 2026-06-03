@@ -1,51 +1,51 @@
 import { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { ComponentSection } from '@/components/showcase/component-section';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionContentText,
+  AccordionHeader,
+  AccordionIcon,
+  AccordionItem,
+  AccordionTitleText,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import {
+  Actionsheet,
+  ActionsheetBackdrop,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetItem,
+  ActionsheetItemText,
+} from '@/components/ui/actionsheet';
+import {
+  AlertDialog,
+  AlertDialogBackdrop,
+  AlertDialogBody,
+  AlertDialogCloseButton,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+} from '@/components/ui/alert-dialog';
 import { Button, ButtonText } from '@/components/ui/button';
+import { Fab, FabIcon, FabLabel } from '@/components/ui/fab';
 import { Heading } from '@/components/ui/heading';
-import { Text } from '@/components/ui/text';
 import { HStack } from '@/components/ui/hstack';
-import { VStack } from '@/components/ui/vstack';
+import { AddIcon, ChevronDownIcon, CloseIcon, Icon } from '@/components/ui/icon';
 import {
   Modal,
   ModalBackdrop,
-  ModalContent,
-  ModalCloseButton,
-  ModalHeader,
   ModalBody,
+  ModalCloseButton,
+  ModalContent,
   ModalFooter,
+  ModalHeader,
 } from '@/components/ui/modal';
-import {
-  AlertDialog,
-  AlertDialogContent,
-  AlertDialogCloseButton,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogBody,
-  AlertDialogBackdrop,
-} from '@/components/ui/alert-dialog';
+import { Text } from '@/components/ui/text';
 import { Tooltip, TooltipContent, TooltipText } from '@/components/ui/tooltip';
-import {
-  Actionsheet,
-  ActionsheetContent,
-  ActionsheetItem,
-  ActionsheetItemText,
-  ActionsheetDragIndicator,
-  ActionsheetDragIndicatorWrapper,
-  ActionsheetBackdrop,
-} from '@/components/ui/actionsheet';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionHeader,
-  AccordionTrigger,
-  AccordionTitleText,
-  AccordionContent,
-  AccordionContentText,
-  AccordionIcon,
-} from '@/components/ui/accordion';
-import { Fab, FabLabel, FabIcon } from '@/components/ui/fab';
-import { Icon, CloseIcon, ChevronDownIcon, AddIcon } from '@/components/ui/icon';
+import { VStack } from '@/components/ui/vstack';
 
 function ModalSection() {
   const [showModal, setShowModal] = useState(false);
@@ -180,8 +180,8 @@ function AccordionSection() {
           </AccordionHeader>
           <AccordionContent>
             <AccordionContentText>
-              Expo is a framework for building universal React Native apps with the best
-              developer experience.
+              Expo is a framework for building universal React Native apps with the best developer
+              experience.
             </AccordionContentText>
           </AccordionContent>
         </AccordionItem>
@@ -194,8 +194,8 @@ function AccordionSection() {
           </AccordionHeader>
           <AccordionContent>
             <AccordionContentText>
-              gluestack-ui is a universal component library with NativeWind styling,
-              accessibility, and cross-platform support.
+              gluestack-ui is a universal component library with NativeWind styling, accessibility,
+              and cross-platform support.
             </AccordionContentText>
           </AccordionContent>
         </AccordionItem>
@@ -208,8 +208,8 @@ function AccordionSection() {
           </AccordionHeader>
           <AccordionContent>
             <AccordionContentText>
-              NativeWind uses Tailwind CSS as a universal styling language for React Native
-              across all platforms.
+              NativeWind uses Tailwind CSS as a universal styling language for React Native across
+              all platforms.
             </AccordionContentText>
           </AccordionContent>
         </AccordionItem>

@@ -1,11 +1,11 @@
-import { BlurView } from "expo-blur";
-import { GlassView, isGlassEffectAPIAvailable } from "expo-glass-effect";
-import { router } from "expo-router";
-import { NativeTabs } from "expo-router/unstable-native-tabs";
-import { Sparkles } from "lucide-react-native";
-import { Platform, Pressable, StyleSheet, View } from "react-native";
+import { BlurView } from 'expo-blur';
+import { GlassView, isGlassEffectAPIAvailable } from 'expo-glass-effect';
+import { router } from 'expo-router';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
+import { Sparkles } from 'lucide-react-native';
+import { Platform, Pressable, StyleSheet, View } from 'react-native';
 
-const IS_IOS = Platform.OS === "ios";
+const IS_IOS = Platform.OS === 'ios';
 const GLASS_AVAILABLE = IS_IOS && isGlassEffectAPIAvailable();
 
 export default function GlassTabsLayout() {
@@ -37,16 +37,13 @@ export default function GlassTabsLayout() {
   );
 }
 
-function ModalAccessoryButton() {
+function _ModalAccessoryButton() {
   const pressable = (
     <Pressable
       accessibilityLabel="Open modal"
       accessibilityRole="button"
-      onPress={() => router.push("/modal")}
-      style={({ pressed }) => [
-        styles.actionPressable,
-        { opacity: pressed ? 0.72 : 1 },
-      ]}
+      onPress={() => router.push('/modal')}
+      style={({ pressed }) => [styles.actionPressable, { opacity: pressed ? 0.72 : 1 }]}
     >
       <Sparkles color="#111315" size={26} strokeWidth={2.4} />
     </Pressable>
@@ -69,53 +66,45 @@ function ModalAccessoryButton() {
   if (IS_IOS) {
     return (
       <View style={styles.actionButton}>
-        <BlurView
-          intensity={60}
-          style={StyleSheet.absoluteFill}
-          tint="systemUltraThinMaterial"
-        />
+        <BlurView intensity={60} style={StyleSheet.absoluteFill} tint="systemUltraThinMaterial" />
         {pressable}
       </View>
     );
   }
 
-  return (
-    <View style={[styles.actionButton, styles.actionButtonAndroid]}>
-      {pressable}
-    </View>
-  );
+  return <View style={[styles.actionButton, styles.actionButtonAndroid]}>{pressable}</View>;
 }
 
 const styles = StyleSheet.create({
   actionButtonLayer: {
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
     bottom: 21,
     paddingRight: 2,
-    position: "absolute",
+    position: 'absolute',
     right: 0,
     width: 70,
   },
   actionButton: {
-    alignItems: "center",
-    backgroundColor: "rgba(255, 255, 255, 0.72)",
-    borderColor: "rgba(255, 255, 255, 0.9)",
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.72)',
+    borderColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: 28,
     borderWidth: 1,
-    boxShadow: "0 10px 24px rgba(15, 23, 42, 0.18)",
+    boxShadow: '0 10px 24px rgba(15, 23, 42, 0.18)',
     height: 56,
-    justifyContent: "center",
-    overflow: "hidden",
+    justifyContent: 'center',
+    overflow: 'hidden',
     width: 56,
   },
   actionButtonAndroid: {
-    backgroundColor: "rgba(255, 255, 255, 0.82)",
-    borderColor: "rgba(0, 0, 0, 0.06)",
+    backgroundColor: 'rgba(255, 255, 255, 0.82)',
+    borderColor: 'rgba(0, 0, 0, 0.06)',
     borderWidth: 1,
   },
   actionPressable: {
-    alignItems: "center",
+    alignItems: 'center',
     height: 56,
-    justifyContent: "center",
+    justifyContent: 'center',
     width: 56,
   },
   root: {

@@ -1,80 +1,100 @@
 import { useState } from 'react';
-import { ScrollView, Text as RNText } from 'react-native';
+import { Text as RNText, ScrollView } from 'react-native';
 import { ComponentSection } from '@/components/showcase/component-section';
-import { Button, ButtonText, ButtonIcon } from '@/components/ui/button';
-import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
-import { Textarea, TextareaInput } from '@/components/ui/textarea';
-import {
-  Select,
-  SelectTrigger,
-  SelectInput,
-  SelectIcon,
-  SelectPortal,
-  SelectBackdrop,
-  SelectContent,
-  SelectDragIndicatorWrapper,
-  SelectDragIndicator,
-  SelectItem,
-} from '@/components/ui/select';
+import { Button, ButtonIcon, ButtonText } from '@/components/ui/button';
 import {
   Checkbox,
+  CheckboxGroup,
+  CheckboxIcon,
   CheckboxIndicator,
   CheckboxLabel,
-  CheckboxIcon,
-  CheckboxGroup,
 } from '@/components/ui/checkbox';
-import { Radio, RadioGroup, RadioIndicator, RadioLabel, RadioIcon } from '@/components/ui/radio';
-import { Switch } from '@/components/ui/switch';
-import { Slider, SliderThumb, SliderTrack, SliderFilledTrack } from '@/components/ui/slider';
-import { Heading } from '@/components/ui/heading';
-import { Text } from '@/components/ui/text';
-import { HStack } from '@/components/ui/hstack';
-import { VStack } from '@/components/ui/vstack';
 import {
   FormControl,
-  FormControlLabel,
-  FormControlLabelText,
   FormControlHelper,
   FormControlHelperText,
+  FormControlLabel,
+  FormControlLabelText,
 } from '@/components/ui/form-control';
+import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
+import { AddIcon, CheckIcon, ChevronDownIcon, CircleIcon, SearchIcon } from '@/components/ui/icon';
+import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input';
+import { Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel } from '@/components/ui/radio';
 import {
-  SearchIcon,
-  CheckIcon,
-  AddIcon,
-  ChevronDownIcon,
-  CircleIcon,
-} from '@/components/ui/icon';
+  Select,
+  SelectBackdrop,
+  SelectContent,
+  SelectDragIndicator,
+  SelectDragIndicatorWrapper,
+  SelectIcon,
+  SelectInput,
+  SelectItem,
+  SelectPortal,
+  SelectTrigger,
+} from '@/components/ui/select';
+import { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@/components/ui/slider';
+import { Switch } from '@/components/ui/switch';
+import { Text } from '@/components/ui/text';
+import { Textarea, TextareaInput } from '@/components/ui/textarea';
+import { VStack } from '@/components/ui/vstack';
 
 function ButtonsSection() {
   return (
     <ComponentSection title="Buttons">
       <RNText className="text-sm font-medium text-typography-600">Variants</RNText>
       <HStack className="flex-wrap gap-2">
-        <Button action="primary"><ButtonText>Solid</ButtonText></Button>
-        <Button variant="outline" action="primary"><ButtonText>Outline</ButtonText></Button>
-        <Button variant="link" action="primary"><ButtonText>Link</ButtonText></Button>
+        <Button action="primary">
+          <ButtonText>Solid</ButtonText>
+        </Button>
+        <Button variant="outline" action="primary">
+          <ButtonText>Outline</ButtonText>
+        </Button>
+        <Button variant="link" action="primary">
+          <ButtonText>Link</ButtonText>
+        </Button>
       </HStack>
 
       <RNText className="text-sm font-medium text-typography-600">Sizes</RNText>
       <HStack className="flex-wrap items-center gap-2">
-        <Button size="xs"><ButtonText>XS</ButtonText></Button>
-        <Button size="sm"><ButtonText>SM</ButtonText></Button>
-        <Button size="md"><ButtonText>MD</ButtonText></Button>
-        <Button size="lg"><ButtonText>LG</ButtonText></Button>
-        <Button size="xl"><ButtonText>XL</ButtonText></Button>
+        <Button size="xs">
+          <ButtonText>XS</ButtonText>
+        </Button>
+        <Button size="sm">
+          <ButtonText>SM</ButtonText>
+        </Button>
+        <Button size="md">
+          <ButtonText>MD</ButtonText>
+        </Button>
+        <Button size="lg">
+          <ButtonText>LG</ButtonText>
+        </Button>
+        <Button size="xl">
+          <ButtonText>XL</ButtonText>
+        </Button>
       </HStack>
 
       <RNText className="text-sm font-medium text-typography-600">Actions</RNText>
       <HStack className="flex-wrap gap-2">
-        <Button action="primary"><ButtonText>Primary</ButtonText></Button>
-        <Button action="secondary"><ButtonText>Secondary</ButtonText></Button>
-        <Button action="positive"><ButtonText>Positive</ButtonText></Button>
-        <Button action="negative"><ButtonText>Negative</ButtonText></Button>
+        <Button action="primary">
+          <ButtonText>Primary</ButtonText>
+        </Button>
+        <Button action="secondary">
+          <ButtonText>Secondary</ButtonText>
+        </Button>
+        <Button action="positive">
+          <ButtonText>Positive</ButtonText>
+        </Button>
+        <Button action="negative">
+          <ButtonText>Negative</ButtonText>
+        </Button>
       </HStack>
 
       <RNText className="text-sm font-medium text-typography-600">States</RNText>
       <HStack className="flex-wrap gap-2">
-        <Button isDisabled><ButtonText>Disabled</ButtonText></Button>
+        <Button isDisabled>
+          <ButtonText>Disabled</ButtonText>
+        </Button>
         <Button action="primary">
           <ButtonIcon as={AddIcon} />
           <ButtonText>With Icon</ButtonText>

@@ -1,10 +1,10 @@
-import { View, Text as RNText } from 'react-native';
-import { useGlassDemo } from './context';
+import { Text as RNText, View } from 'react-native';
 import { Avatar, AvatarFallbackText } from '@/components/ui/avatar';
+import { Divider } from '@/components/ui/divider';
+import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
-import { Heading } from '@/components/ui/heading';
-import { Divider } from '@/components/ui/divider';
+import { useGlassDemo } from './context';
 
 export function ProfileSection() {
   const { profile } = useGlassDemo();
@@ -18,7 +18,9 @@ export function ProfileSection() {
           </Avatar>
         </View>
         <VStack className="gap-0.5">
-          <Heading size="lg" className="text-white">{profile.name}</Heading>
+          <Heading size="lg" className="text-white">
+            {profile.name}
+          </Heading>
           <RNText className="text-sm text-white/60">{profile.username}</RNText>
         </VStack>
       </HStack>

@@ -1,10 +1,10 @@
-import { View, Text as RNText, ScrollView } from 'react-native';
-import { VStack } from '@/components/ui/vstack';
-import { HStack } from '@/components/ui/hstack';
+import { Text as RNText, ScrollView, View } from 'react-native';
 import { Avatar, AvatarFallbackText } from '@/components/ui/avatar';
-import { Heading } from '@/components/ui/heading';
 import { Divider } from '@/components/ui/divider';
-import { Icon, SettingsIcon, BellIcon, StarIcon, MailIcon } from '@/components/ui/icon';
+import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
+import { BellIcon, Icon, MailIcon, SettingsIcon, StarIcon } from '@/components/ui/icon';
+import { VStack } from '@/components/ui/vstack';
 
 const MENU_ITEMS = [
   { icon: BellIcon, label: 'Notifications', detail: '3 new', color: 'text-red-400' },
@@ -32,7 +32,9 @@ export default function ProfileScreen() {
             <AvatarFallbackText>AR</AvatarFallbackText>
           </Avatar>
         </View>
-        <Heading size="xl" className="text-white">Arjun</Heading>
+        <Heading size="xl" className="text-white">
+          Arjun
+        </Heading>
         <RNText className="mt-1 text-sm text-white/50">@arjun</RNText>
 
         <HStack className="mt-5 w-full justify-around">

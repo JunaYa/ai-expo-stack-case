@@ -1,16 +1,16 @@
-import { ScrollView, Text as RNText } from 'react-native';
+import { Text as RNText, ScrollView } from 'react-native';
 import { ComponentSection } from '@/components/showcase/component-section';
+import { Alert, AlertIcon, AlertText } from '@/components/ui/alert';
 import { Button, ButtonText } from '@/components/ui/button';
 import { Heading } from '@/components/ui/heading';
-import { Text } from '@/components/ui/text';
 import { HStack } from '@/components/ui/hstack';
-import { VStack } from '@/components/ui/vstack';
-import { Alert, AlertText, AlertIcon } from '@/components/ui/alert';
+import { AlertCircleIcon, CheckCircleIcon, CloseIcon, InfoIcon } from '@/components/ui/icon';
 import { Progress, ProgressFilledTrack } from '@/components/ui/progress';
-import { Spinner } from '@/components/ui/spinner';
-import { useToast, Toast, ToastTitle, ToastDescription } from '@/components/ui/toast';
 import { Skeleton, SkeletonText } from '@/components/ui/skeleton';
-import { InfoIcon, CheckCircleIcon, AlertCircleIcon, CloseIcon } from '@/components/ui/icon';
+import { Spinner } from '@/components/ui/spinner';
+import { Text } from '@/components/ui/text';
+import { Toast, ToastDescription, ToastTitle, useToast } from '@/components/ui/toast';
+import { VStack } from '@/components/ui/vstack';
 
 function AlertsSection() {
   return (

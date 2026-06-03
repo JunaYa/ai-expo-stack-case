@@ -9,7 +9,11 @@ export default function TwoTabsLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'house', android: 'home', web: 'home' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'house', android: 'home', web: 'home' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
@@ -18,7 +22,11 @@ export default function TwoTabsLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'person', android: 'person', web: 'person' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'person', android: 'person', web: 'person' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />

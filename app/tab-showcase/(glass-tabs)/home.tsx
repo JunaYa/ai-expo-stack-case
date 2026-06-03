@@ -1,9 +1,9 @@
 import { ScrollView } from 'react-native';
 import { GlassDemoProvider } from '@/components/showcase/glass-demo/context';
-import { ProfileSection } from '@/components/showcase/glass-demo/profile-section';
 import { DashboardSection } from '@/components/showcase/glass-demo/dashboard-section';
-import { TaskSection } from '@/components/showcase/glass-demo/task-section';
+import { ProfileSection } from '@/components/showcase/glass-demo/profile-section';
 import { SettingsSection } from '@/components/showcase/glass-demo/settings-section';
+import { TaskSection } from '@/components/showcase/glass-demo/task-section';
 
 export default function HomeScreen() {
   return (

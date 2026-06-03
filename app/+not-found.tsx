@@ -1,9 +1,8 @@
 import { Link, Stack } from 'expo-router';
 import { View } from 'react-native';
-import { VStack } from '@/components/ui/vstack';
-import { Heading } from '@/components/ui/heading';
-import { Text } from '@/components/ui/text';
 import { Button, ButtonText } from '@/components/ui/button';
+import { Heading } from '@/components/ui/heading';
+import { VStack } from '@/components/ui/vstack';
 
 export default function NotFoundScreen() {
   return (

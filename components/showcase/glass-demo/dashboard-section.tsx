@@ -1,16 +1,25 @@
-import { View, Text as RNText } from 'react-native';
-import { useGlassDemo } from './context';
-import { HStack } from '@/components/ui/hstack';
-import { VStack } from '@/components/ui/vstack';
-import { Progress, ProgressFilledTrack } from '@/components/ui/progress';
-import { Slider, SliderTrack, SliderFilledTrack, SliderThumb } from '@/components/ui/slider';
+import { Text as RNText, View } from 'react-native';
 import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
+import { Slider, SliderFilledTrack, SliderThumb, SliderTrack } from '@/components/ui/slider';
+import { VStack } from '@/components/ui/vstack';
+import { useGlassDemo } from './context';
 
-function CircularGauge({ value, color, label, size = 80 }: { value: number; color: string; label: string; size?: number }) {
+function CircularGauge({
+  value,
+  color,
+  label,
+  size = 80,
+}: {
+  value: number;
+  color: string;
+  label: string;
+  size?: number;
+}) {
   const strokeWidth = 6;
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const progress = circumference * (1 - value);
+  const _progress = circumference * (1 - value);
 
   return (
     <View style={{ width: size, height: size }} className="items-center justify-center">
@@ -50,7 +59,8 @@ function CircularGauge({ value, color, label, size = 80 }: { value: number; colo
 }
 
 export function DashboardSection() {
-  const { tasks, productivityScore, focusLevel, setProductivityScore, setFocusLevel } = useGlassDemo();
+  const { tasks, productivityScore, focusLevel, setProductivityScore, setFocusLevel } =
+    useGlassDemo();
 
   const completedCount = tasks.filter((t) => t.completed).length;
   const completionRate = tasks.length > 0 ? completedCount / tasks.length : 0;
@@ -58,7 +68,9 @@ export function DashboardSection() {
 
   return (
     <View className="mx-4 mb-6 overflow-hidden rounded-2xl bg-white/10 p-5">
-      <Heading size="md" className="mb-4 text-white">Dashboard</Heading>
+      <Heading size="md" className="mb-4 text-white">
+        Dashboard
+      </Heading>
 
       <HStack className="mb-6 justify-around">
         <CircularGauge value={completionRate} color="#22c55e" label="Done" />
@@ -68,7 +80,9 @@ export function DashboardSection() {
 
       <HStack className="mb-6 gap-3">
         <View className="flex-1 items-center rounded-xl bg-white/10 p-3">
-          <RNText className="text-2xl font-bold text-white">{completedCount}/{tasks.length}</RNText>
+          <RNText className="text-2xl font-bold text-white">
+            {completedCount}/{tasks.length}
+          </RNText>
           <RNText className="text-xs text-white/50">Completed</RNText>
         </View>
         <View className="flex-1 items-center rounded-xl bg-white/10 p-3">

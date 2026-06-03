@@ -1,23 +1,23 @@
-import { ScrollView, View, Text as RNText } from 'react-native';
+import { Text as RNText, ScrollView, View } from 'react-native';
 import { ComponentSection } from '@/components/showcase/component-section';
-import { Heading } from '@/components/ui/heading';
-import { Text } from '@/components/ui/text';
+import { Avatar, AvatarFallbackText } from '@/components/ui/avatar';
 import { Badge, BadgeText } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { HStack } from '@/components/ui/hstack';
-import { VStack } from '@/components/ui/vstack';
 import { Divider } from '@/components/ui/divider';
-import { Avatar, AvatarFallbackText } from '@/components/ui/avatar';
-import { Image } from '@/components/ui/image';
+import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
 import {
-  Icon,
-  SunIcon,
-  MoonIcon,
-  StarIcon,
   BellIcon,
-  SettingsIcon,
+  Icon,
+  MoonIcon,
   SearchIcon,
+  SettingsIcon,
+  StarIcon,
+  SunIcon,
 } from '@/components/ui/icon';
+import { Image } from '@/components/ui/image';
+import { Text } from '@/components/ui/text';
+import { VStack } from '@/components/ui/vstack';
 
 function TypographySection() {
   return (
@@ -39,11 +39,21 @@ function TypographySection() {
       </VStack>
 
       <HStack className="flex-wrap gap-2">
-        <Badge action="info"><BadgeText>Info</BadgeText></Badge>
-        <Badge action="success"><BadgeText>Success</BadgeText></Badge>
-        <Badge action="warning"><BadgeText>Warning</BadgeText></Badge>
-        <Badge action="error"><BadgeText>Error</BadgeText></Badge>
-        <Badge variant="outline"><BadgeText>Outline</BadgeText></Badge>
+        <Badge action="info">
+          <BadgeText>Info</BadgeText>
+        </Badge>
+        <Badge action="success">
+          <BadgeText>Success</BadgeText>
+        </Badge>
+        <Badge action="warning">
+          <BadgeText>Warning</BadgeText>
+        </Badge>
+        <Badge action="error">
+          <BadgeText>Error</BadgeText>
+        </Badge>
+        <Badge variant="outline">
+          <BadgeText>Outline</BadgeText>
+        </Badge>
       </HStack>
     </ComponentSection>
   );
@@ -101,10 +111,18 @@ function MediaSection() {
     <ComponentSection title="Media">
       <RNText className="text-sm font-medium text-typography-600">Avatar</RNText>
       <HStack className="gap-3">
-        <Avatar size="sm"><AvatarFallbackText>AB</AvatarFallbackText></Avatar>
-        <Avatar size="md"><AvatarFallbackText>CD</AvatarFallbackText></Avatar>
-        <Avatar size="lg"><AvatarFallbackText>EF</AvatarFallbackText></Avatar>
-        <Avatar size="xl"><AvatarFallbackText>GH</AvatarFallbackText></Avatar>
+        <Avatar size="sm">
+          <AvatarFallbackText>AB</AvatarFallbackText>
+        </Avatar>
+        <Avatar size="md">
+          <AvatarFallbackText>CD</AvatarFallbackText>
+        </Avatar>
+        <Avatar size="lg">
+          <AvatarFallbackText>EF</AvatarFallbackText>
+        </Avatar>
+        <Avatar size="xl">
+          <AvatarFallbackText>GH</AvatarFallbackText>
+        </Avatar>
       </HStack>
 
       <RNText className="text-sm font-medium text-typography-600">Icons</RNText>

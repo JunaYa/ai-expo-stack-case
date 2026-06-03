@@ -1,10 +1,10 @@
-import { ScrollView, Text } from 'react-native';
 import { Link } from 'expo-router';
-import { VStack } from '@/components/ui/vstack';
-import { HStack } from '@/components/ui/hstack';
-import { Heading } from '@/components/ui/heading';
-import { Card } from '@/components/ui/card';
+import { ScrollView, Text } from 'react-native';
 import { Badge, BadgeText } from '@/components/ui/badge';
+import { Card } from '@/components/ui/card';
+import { Heading } from '@/components/ui/heading';
+import { HStack } from '@/components/ui/hstack';
+import { VStack } from '@/components/ui/vstack';
 
 const layouts = [
   {
@@ -59,10 +59,7 @@ const layouts = [
 
 export default function TabShowcaseIndex() {
   return (
-    <ScrollView
-      className="flex-1 bg-background-0"
-      contentContainerClassName="px-6 pb-24 pt-6"
-    >
+    <ScrollView className="flex-1 bg-background-0" contentContainerClassName="px-6 pb-24 pt-6">
       <VStack className="mb-6 gap-1">
         <Heading size="2xl">Tab Layouts</Heading>
         <Text className="text-sm text-typography-500">
@@ -79,9 +76,7 @@ export default function TabShowcaseIndex() {
                   <BadgeText>{item.badge}</BadgeText>
                 </Badge>
                 <VStack className="flex-1 gap-1">
-                  <Text className="text-base font-semibold text-typography-900">
-                    {item.title}
-                  </Text>
+                  <Text className="text-base font-semibold text-typography-900">{item.title}</Text>
                   <Text className="text-sm text-typography-500">{item.desc}</Text>
                 </VStack>
               </HStack>

@@ -1,7 +1,7 @@
-import { View, Pressable } from 'react-native';
 import { Tabs } from 'expo-router';
 import { SymbolView } from 'expo-symbols';
-import { Icon, AddIcon } from '@/components/ui/icon';
+import { View } from 'react-native';
+import { AddIcon, Icon } from '@/components/ui/icon';
 
 export default function CenterFabLayout() {
   return (
@@ -16,7 +16,11 @@ export default function CenterFabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'house', android: 'home', web: 'home' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'house', android: 'home', web: 'home' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
@@ -25,7 +29,11 @@ export default function CenterFabLayout() {
         options={{
           title: 'Search',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'magnifyingglass', android: 'search', web: 'search' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
@@ -46,7 +54,11 @@ export default function CenterFabLayout() {
         options={{
           title: 'Alerts',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'bell', android: 'notifications', web: 'notifications' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'bell', android: 'notifications', web: 'notifications' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
@@ -55,7 +67,11 @@ export default function CenterFabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <SymbolView name={{ ios: 'person', android: 'person', web: 'person' }} tintColor={color} size={22} />
+            <SymbolView
+              name={{ ios: 'person', android: 'person', web: 'person' }}
+              tintColor={color}
+              size={22}
+            />
           ),
         }}
       />
