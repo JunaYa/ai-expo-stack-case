@@ -1,6 +1,7 @@
 import { Link } from 'expo-router';
 import { useColorScheme } from 'nativewind';
 import { ScrollView, Text } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Badge, BadgeText } from '@/components/ui/badge';
 import { Button, ButtonText } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -48,10 +49,13 @@ function StackBadges() {
 }
 
 export default function HomeScreen() {
+  const insets = useSafeAreaInsets();
+
   return (
     <ScrollView
       className="flex-1 bg-background-0"
-      contentContainerClassName="px-6 pb-24 pt-12"
+      contentContainerClassName="px-6 pb-24"
+      contentContainerStyle={{ paddingTop: insets.top + 12 }}
       showsVerticalScrollIndicator={false}
     >
       <VStack className="gap-6">
