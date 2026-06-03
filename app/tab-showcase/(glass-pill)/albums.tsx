@@ -153,7 +153,7 @@ export default function AlbumsScreen() {
   return (
     <View style={styles.root}>
       <ScrollView
-        contentContainerStyle={styles.content}
+        contentContainerStyle={[styles.content, { paddingTop: insets.top + 16 }]}
         showsVerticalScrollIndicator={false}
         style={styles.scrollView}
       >
@@ -252,7 +252,7 @@ const styles = StyleSheet.create({
     gap: 24,
     paddingBottom: 150,
     paddingHorizontal: 20,
-    paddingTop: 16,
+    paddingTop: 0,
   },
   grid: {
     flexDirection: 'row',
