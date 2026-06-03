@@ -121,6 +121,27 @@ export default function HomeScreen() {
         <Divider />
 
         <VStack className="gap-3">
+          <Text className="font-medium text-sm text-typography-600">Personalization</Text>
+          <Link href="/settings" asChild>
+            <Card size="md" variant="elevated" className="active:opacity-80">
+              <HStack className="items-center gap-3">
+                <Badge size="lg" action="muted" variant="solid">
+                  <BadgeText>{'{ }'}</BadgeText>
+                </Badge>
+                <VStack className="flex-1 gap-1">
+                  <Text className="font-semibold text-base text-typography-900">Settings</Text>
+                  <Text className="text-sm text-typography-500">
+                    Theme, font, text size, surface color, corner radius, motion
+                  </Text>
+                </VStack>
+              </HStack>
+            </Card>
+          </Link>
+        </VStack>
+
+        <Divider />
+
+        <VStack className="gap-3">
           <Text className="font-medium text-sm text-typography-600">Tab Layouts</Text>
           <Link href="/tab-showcase" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">

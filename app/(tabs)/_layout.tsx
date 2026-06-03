@@ -8,6 +8,7 @@ export default function TabLayout() {
       <Stack.Screen name="forms" options={{ title: 'Forms' }} />
       <Stack.Screen name="feedback" options={{ title: 'Feedback' }} />
       <Stack.Screen name="overlays" options={{ title: 'Overlays' }} />
+      <Stack.Screen name="settings" options={{ title: 'Settings' }} />
     </Stack>
   );
 }
