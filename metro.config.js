@@ -4,36 +4,52 @@ const { withNativeWind } = require('nativewind/metro');
 
 const config = getDefaultConfig(__dirname);
 
-const appNodeModules = path.resolve(__dirname, 'node_modules');
-const localScreens = path.resolve(__dirname, 'packages/react-native-screens');
+const appRoot = __dirname;
+const appNodeModules = path.resolve(appRoot, 'node_modules');
+const localScreens = path.resolve(appRoot, 'packages/react-native-screens');
 const localBottomTabs = path.resolve(
-  __dirname,
+  appRoot,
   'packages/react-native-bottom-tabs/packages/react-native-bottom-tabs',
 );
 
 config.watchFolders = [...(config.watchFolders || []), localScreens, localBottomTabs];
 
-// Block submodule node_modules so their own react/react-native copies are never used
-config.resolver.blockList = [
-  ...(Array.isArray(config.resolver.blockList) ? config.resolver.blockList : []),
-  new RegExp(`${localScreens}/node_modules/.*`),
-  new RegExp(`${path.resolve(__dirname, 'packages/react-native-bottom-tabs')}/node_modules/.*`),
-];
-
 // App's node_modules always takes priority
 config.resolver.nodeModulesPaths = [appNodeModules];
 
+const prevResolveRequest = config.resolver.resolveRequest;
+
 config.resolver.resolveRequest = (context, moduleName, platform) => {
-  // Redirect react-native-screens to local source
+  const origin = context.originModulePath || '';
+  const isFromSubmodule = origin.startsWith(localScreens) || origin.startsWith(localBottomTabs);
+
+  // When resolving FROM submodule source, force shared deps to the app's copies
+  if (isFromSubmodule) {
+    if (
+      moduleName === 'react' ||
+      moduleName === 'react-native' ||
+      moduleName.startsWith('react/') ||
+      moduleName.startsWith('react-native/')
+    ) {
+      return context.resolveRequest(
+        { ...context, nodeModulesPaths: [appNodeModules] },
+        moduleName,
+        platform,
+      );
+    }
+  }
+
+  // Redirect package imports to local source
   if (moduleName === 'react-native-screens') {
     return context.resolveRequest(context, `${localScreens}/src/index`, platform);
   }
-
-  // Redirect react-native-bottom-tabs to local source
   if (moduleName === 'react-native-bottom-tabs') {
     return context.resolveRequest(context, `${localBottomTabs}/src/index`, platform);
   }
 
+  if (prevResolveRequest) {
+    return prevResolveRequest(context, moduleName, platform);
+  }
   return context.resolveRequest(context, moduleName, platform);
 };
 
