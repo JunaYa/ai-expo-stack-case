@@ -4,7 +4,15 @@
     "strict": true,
     "paths": {
       "@/*": ["./*"],
-      "tailwind.config": ["./tailwind.config.js"]
+      "tailwind.config": ["./tailwind.config.js"],
+      "react-native-screens": ["./packages/react-native-screens/src/index"],
+      "react-native-screens/*": ["./packages/react-native-screens/src/*"],
+      "react-native-bottom-tabs": [
+        "./packages/react-native-bottom-tabs/packages/react-native-bottom-tabs/src/index"
+      ],
+      "react-native-bottom-tabs/*": [
+        "./packages/react-native-bottom-tabs/packages/react-native-bottom-tabs/src/*"
+      ]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts", "nativewind-env.d.ts"]

@@ -1,0 +1,6 @@
+[submodule "packages/react-native-screens"]
+	path = packages/react-native-screens
+	url = https://github.com/JunaYa/react-native-screens.git
+[submodule "packages/react-native-bottom-tabs"]
+	path = packages/react-native-bottom-tabs
+	url = https://github.com/JunaYa/react-native-bottom-tabs.git
