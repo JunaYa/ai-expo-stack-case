@@ -1,8 +1,14 @@
 import type { MenuAction, NativeActionEvent } from '@expo/ui/community/menu';
 import { MenuView } from '@expo/ui/community/menu';
+import { BlurView } from 'expo-blur';
+import { GlassView, isGlassEffectAPIAvailable } from 'expo-glass-effect';
 import { SymbolView } from 'expo-symbols';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+const IS_IOS = Platform.OS === 'ios';
+const GLASS_AVAILABLE = IS_IOS && isGlassEffectAPIAvailable();
 
 type SortOption = 'recent' | 'date' | 'title';
 type FilterOption = 'all' | 'favorites' | 'edited' | 'photos' | 'videos' | 'screenshots' | 'shared';
@@ -142,49 +148,82 @@ export default function AlbumsScreen() {
   };
 
   const actions = buildMenuActions(sort, filter, viewOptions);
+  const insets = useSafeAreaInsets();
 
   return (
-    <ScrollView
-      style={styles.root}
-      contentContainerStyle={styles.content}
-      showsVerticalScrollIndicator={false}
-    >
-      <View style={styles.header}>
-        <View>
-          <Text style={styles.title}>Albums</Text>
-          <Text style={styles.subtitle}>
-            {ALBUMS.length} albums · {filter !== 'all' ? filter : 'All items'}
+    <View style={styles.root}>
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+        style={styles.scrollView}
+      >
+        <View style={styles.header}>
+          <View>
+            <Text style={styles.title}>Albums</Text>
+            <Text style={styles.subtitle}>
+              {ALBUMS.length} albums · {filter !== 'all' ? filter : 'All items'}
+            </Text>
+          </View>
+        </View>
+
+        <View style={styles.grid}>
+          {ALBUMS.map(album => (
+            <View key={album.title} style={styles.albumCard}>
+              <View style={[styles.albumCover, { backgroundColor: album.color }]}>
+                <SymbolView name="photo.on.rectangle" tintColor="rgba(255,255,255,0.7)" size={32} />
+              </View>
+              <Text style={styles.albumTitle} numberOfLines={1}>
+                {album.title}
+              </Text>
+              <Text style={styles.albumCount}>{album.count}</Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.infoCard}>
+          <Text style={styles.infoTitle}>MenuView</Text>
+          <Text style={styles.infoBody}>
+            Native UIMenu on iOS with Liquid Glass material. Supports checkmark state, SF Symbol
+            icons, submenus, and inline sections — all via @expo/ui.
           </Text>
         </View>
-        <MenuView actions={actions} onPressAction={handleMenuAction}>
-          <View style={styles.menuButton}>
-            <SymbolView name="ellipsis.circle" tintColor="#3478f6" size={28} weight="medium" />
-          </View>
-        </MenuView>
-      </View>
+      </ScrollView>
 
-      <View style={styles.grid}>
-        {ALBUMS.map(album => (
-          <View key={album.title} style={styles.albumCard}>
-            <View style={[styles.albumCover, { backgroundColor: album.color }]}>
-              <SymbolView name="photo.on.rectangle" tintColor="rgba(255,255,255,0.7)" size={32} />
-            </View>
-            <Text style={styles.albumTitle} numberOfLines={1}>
-              {album.title}
-            </Text>
-            <Text style={styles.albumCount}>{album.count}</Text>
-          </View>
-        ))}
-      </View>
+      <MenuView
+        actions={actions}
+        onPressAction={handleMenuAction}
+        style={[styles.menuAnchor, { top: insets.top + 8 }]}
+      >
+        <GlassMenuButton />
+      </MenuView>
+    </View>
+  );
+}
 
-      <View style={styles.infoCard}>
-        <Text style={styles.infoTitle}>MenuView</Text>
-        <Text style={styles.infoBody}>
-          Native UIMenu on iOS with Liquid Glass material. Supports checkmark state, SF Symbol
-          icons, submenus, and inline sections — all via @expo/ui.
-        </Text>
-      </View>
-    </ScrollView>
+function GlassMenuButton() {
+  const icon = <SymbolView name="ellipsis" tintColor="#111315" size={20} weight="bold" />;
+
+  if (GLASS_AVAILABLE) {
+    return (
+      <GlassView
+        colorScheme="light"
+        glassEffectStyle="regular"
+        isInteractive
+        style={styles.menuButton}
+        tintColor="rgba(255, 255, 255, 0.78)"
+      >
+        {icon}
+      </GlassView>
+    );
+  }
+
+  return (
+    <View style={[styles.menuButton, styles.menuButtonFallback]}>
+      {IS_IOS ? (
+        <BlurView intensity={72} style={StyleSheet.absoluteFill} tint="systemChromeMaterialLight" />
+      ) : null}
+      {icon}
+    </View>
   );
 }
 
@@ -241,14 +280,30 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '800',
   },
+  menuAnchor: {
+    position: 'absolute',
+    right: 20,
+    zIndex: 10,
+  },
   menuButton: {
     alignItems: 'center',
+    borderRadius: 22,
+    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
     height: 44,
     justifyContent: 'center',
+    overflow: 'hidden',
     width: 44,
+  },
+  menuButtonFallback: {
+    backgroundColor: 'rgba(255, 255, 255, 0.72)',
+    borderColor: 'rgba(255, 255, 255, 0.9)',
+    borderWidth: 1,
   },
   root: {
     backgroundColor: '#f7f5f1',
+    flex: 1,
+  },
+  scrollView: {
     flex: 1,
   },
   subtitle: {
