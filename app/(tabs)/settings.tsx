@@ -27,10 +27,9 @@ const CORNER_RADII: { label: string; value: CornerRadius; px: number }[] = [
 ];
 
 const TEXT_SIZES: { label: string; value: TextSize; scale: number }[] = [
-  { label: 'S', value: 'small', scale: 0.85 },
-  { label: 'M', value: 'medium', scale: 1 },
-  { label: 'L', value: 'large', scale: 1.15 },
-  { label: 'XL', value: 'xlarge', scale: 1.3 },
+  { label: 'Compact', value: 'small', scale: 0.85 },
+  { label: 'Default', value: 'medium', scale: 1 },
+  { label: 'Comfortable', value: 'large', scale: 1.15 },
 ];
 
 const FONTS: { label: string; value: FontFamily; family: string | undefined }[] = [
@@ -311,17 +310,43 @@ export default function SettingsScreen() {
 
       <View style={{ gap: 6 }}>
         <SectionHeader title="Text Size" />
-        <OptionRow>
-          {TEXT_SIZES.map(s => (
-            <Chip
-              key={s.value}
-              label={s.label}
-              selected={textSize === s.value}
-              onPress={() => setTextSize(s.value)}
-              radius={currentRadius}
-            />
-          ))}
-        </OptionRow>
+        <View
+          style={{
+            backgroundColor: '#f3f4f6',
+            borderRadius: currentRadius,
+            flexDirection: 'row',
+            padding: 3,
+          }}
+        >
+          {TEXT_SIZES.map(s => {
+            const selected = textSize === s.value;
+            return (
+              <Pressable
+                key={s.value}
+                onPress={() => setTextSize(s.value)}
+                style={({ pressed }) => ({
+                  alignItems: 'center',
+                  backgroundColor: selected ? '#fff' : 'transparent',
+                  borderRadius: Math.max(currentRadius - 3, 0),
+                  boxShadow: selected ? '0 1px 3px rgba(0,0,0,0.1)' : 'none',
+                  flex: 1,
+                  opacity: pressed ? 0.7 : 1,
+                  paddingVertical: 10,
+                })}
+              >
+                <Text
+                  style={{
+                    color: selected ? '#111827' : '#6b7280',
+                    fontSize: 14,
+                    fontWeight: selected ? '600' : '400',
+                  }}
+                >
+                  {s.label}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
       </View>
 
       <View style={{ gap: 6 }}>
