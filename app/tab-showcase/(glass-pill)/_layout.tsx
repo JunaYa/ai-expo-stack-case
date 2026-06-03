@@ -1,5 +1,4 @@
-import { Tabs } from 'expo-router';
-import { GlassPillTabBar } from '@/components/showcase/glass-pill-tab-bar';
+import { NativeTabs } from 'expo-router/unstable-native-tabs';
 
 export const unstable_settings = {
   initialRouteName: 'article',
@@ -7,16 +6,23 @@ export const unstable_settings = {
 
 export default function GlassPillLayout() {
   return (
-    <Tabs
-      initialRouteName="article"
-      screenOptions={{
-        headerShown: false,
-      }}
-      tabBar={(props) => <GlassPillTabBar {...props} />}
-    >
-      <Tabs.Screen name="article" options={{ title: 'Article' }} />
-      <Tabs.Screen name="contacts" options={{ title: 'Contacts' }} />
-      <Tabs.Screen name="albums" options={{ title: 'Albums' }} />
-    </Tabs>
+    <NativeTabs minimizeBehavior="automatic">
+      <NativeTabs.Trigger name="article">
+        <NativeTabs.Trigger.Icon sf="book.fill" />
+        <NativeTabs.Trigger.Label>Article</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="contacts">
+        <NativeTabs.Trigger.Icon sf="person.2.fill" />
+        <NativeTabs.Trigger.Label>Contacts</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="albums">
+        <NativeTabs.Trigger.Icon sf="music.note" />
+        <NativeTabs.Trigger.Label>Albums</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="search" role="search">
+        <NativeTabs.Trigger.Icon sf="magnifyingglass" />
+        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
