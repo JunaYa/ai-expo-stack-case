@@ -46,11 +46,11 @@ export default function SearchScreen() {
           Categories
         </Heading>
         <VStack className="gap-2">
-          {CATEGORIES.map((cat) => (
+          {CATEGORIES.map(cat => (
             <HStack key={cat.label} className={`items-center gap-3 rounded-xl ${cat.color} p-3`}>
               <RNText className="text-xl">{cat.emoji}</RNText>
-              <RNText className="flex-1 text-sm font-medium text-white">{cat.label}</RNText>
-              <RNText className="text-xs text-white/50">{cat.count} items</RNText>
+              <RNText className="flex-1 font-medium text-sm text-white">{cat.label}</RNText>
+              <RNText className="text-white/50 text-xs">{cat.count} items</RNText>
             </HStack>
           ))}
         </VStack>
@@ -61,7 +61,7 @@ export default function SearchScreen() {
           Recent Searches
         </Heading>
         <VStack className="gap-2">
-          {RECENT.map((item) => (
+          {RECENT.map(item => (
             <HStack key={item} className="items-center gap-2 py-1.5">
               <RNText className="text-white/30">🕑</RNText>
               <RNText className="text-sm text-white/60">{item}</RNText>

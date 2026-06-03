@@ -68,7 +68,7 @@ export default function TabShowcaseIndex() {
       </VStack>
 
       <VStack className="gap-3">
-        {layouts.map((item) => (
+        {layouts.map(item => (
           <Link key={item.href} href={item.href as any} asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <HStack className="items-center gap-3">
@@ -76,7 +76,7 @@ export default function TabShowcaseIndex() {
                   <BadgeText>{item.badge}</BadgeText>
                 </Badge>
                 <VStack className="flex-1 gap-1">
-                  <Text className="text-base font-semibold text-typography-900">{item.title}</Text>
+                  <Text className="font-semibold text-base text-typography-900">{item.title}</Text>
                   <Text className="text-sm text-typography-500">{item.desc}</Text>
                 </VStack>
               </HStack>

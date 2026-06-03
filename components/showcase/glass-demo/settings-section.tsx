@@ -36,19 +36,19 @@ export function SettingsSection() {
         <SettingRow
           label="Push Notifications"
           value={settings.notifications}
-          onToggle={(v) => updateSettings({ notifications: v })}
+          onToggle={v => updateSettings({ notifications: v })}
         />
         <Divider className="bg-white/10" />
         <SettingRow
           label="Auto-save Changes"
           value={settings.autoSave}
-          onToggle={(v) => updateSettings({ autoSave: v })}
+          onToggle={v => updateSettings({ autoSave: v })}
         />
         <Divider className="bg-white/10" />
         <SettingRow
           label="Dark Mode"
           value={settings.darkMode}
-          onToggle={(v) => updateSettings({ darkMode: v })}
+          onToggle={v => updateSettings({ darkMode: v })}
         />
       </VStack>
     </View>

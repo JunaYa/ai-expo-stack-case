@@ -14,7 +14,7 @@ const PRIORITY_COLORS: Record<string, string> = {
 export function TaskSection() {
   const { tasks, toggleTask, taskFilter, setTaskFilter } = useGlassDemo();
 
-  const filteredTasks = tasks.filter((t) => {
+  const filteredTasks = tasks.filter(t => {
     if (taskFilter === 'pending') return !t.completed;
     if (taskFilter === 'completed') return t.completed;
     return true;
@@ -29,14 +29,14 @@ export function TaskSection() {
       </Heading>
 
       <HStack className="mb-4 gap-2">
-        {filters.map((f) => (
+        {filters.map(f => (
           <Pressable
             key={f}
             onPress={() => setTaskFilter(f)}
             className={`flex-1 items-center rounded-lg py-2 ${taskFilter === f ? 'bg-white/20' : 'bg-white/5'}`}
           >
             <RNText
-              className={`text-xs font-medium capitalize ${taskFilter === f ? 'text-white' : 'text-white/50'}`}
+              className={`font-medium text-xs capitalize ${taskFilter === f ? 'text-white' : 'text-white/50'}`}
             >
               {f}
             </RNText>
@@ -51,23 +51,23 @@ export function TaskSection() {
         </View>
       ) : (
         <VStack className="gap-3">
-          {filteredTasks.map((task) => (
+          {filteredTasks.map(task => (
             <HStack key={task.id} className="items-center gap-3 rounded-xl bg-white/5 p-3">
               <RNText className="text-2xl">{task.emoji}</RNText>
               <VStack className="flex-1 gap-0.5">
                 <HStack className="items-center gap-2">
                   <RNText
-                    className={`text-sm font-medium ${task.completed ? 'text-white/40 line-through' : 'text-white'}`}
+                    className={`font-medium text-sm ${task.completed ? 'text-white/40 line-through' : 'text-white'}`}
                   >
                     {task.title}
                   </RNText>
                   <RNText
-                    className={`text-[10px] font-semibold uppercase ${PRIORITY_COLORS[task.priority]}`}
+                    className={`font-semibold text-[10px] uppercase ${PRIORITY_COLORS[task.priority]}`}
                   >
                     {task.priority}
                   </RNText>
                 </HStack>
-                <RNText className="text-xs text-white/40">{task.description}</RNText>
+                <RNText className="text-white/40 text-xs">{task.description}</RNText>
               </VStack>
               <Switch value={task.completed} onToggle={() => toggleTask(task.id)} />
             </HStack>

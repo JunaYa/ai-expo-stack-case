@@ -38,10 +38,10 @@ export default function ProfileScreen() {
         <RNText className="mt-1 text-sm text-white/50">@arjun</RNText>
 
         <HStack className="mt-5 w-full justify-around">
-          {STATS.map((stat) => (
+          {STATS.map(stat => (
             <VStack key={stat.label} className="items-center gap-0.5">
-              <RNText className="text-xl font-bold text-white">{stat.value}</RNText>
-              <RNText className="text-xs text-white/40">{stat.label}</RNText>
+              <RNText className="font-bold text-white text-xl">{stat.value}</RNText>
+              <RNText className="text-white/40 text-xs">{stat.label}</RNText>
             </VStack>
           ))}
         </HStack>
@@ -54,9 +54,9 @@ export default function ProfileScreen() {
               {i > 0 && <Divider className="bg-white/10" />}
               <HStack className="items-center gap-3 py-3">
                 <Icon as={item.icon} size="lg" className={item.color} />
-                <RNText className="flex-1 text-sm font-medium text-white">{item.label}</RNText>
+                <RNText className="flex-1 font-medium text-sm text-white">{item.label}</RNText>
                 {item.detail ? (
-                  <RNText className="text-xs text-white/40">{item.detail}</RNText>
+                  <RNText className="text-white/40 text-xs">{item.detail}</RNText>
                 ) : null}
                 <RNText className="text-white/20">›</RNText>
               </HStack>

@@ -122,7 +122,7 @@ function TooltipSection() {
     <ComponentSection title="Tooltip">
       <HStack className="gap-3">
         <Tooltip
-          trigger={(triggerProps) => (
+          trigger={triggerProps => (
             <Button variant="outline" {...triggerProps}>
               <ButtonText>Hover me</ButtonText>
             </Button>

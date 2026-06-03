@@ -85,7 +85,7 @@ export function GlassPillDemoScreen({ variant }: GlassPillDemoScreenProps) {
 
       <View style={styles.recentCard}>
         <Text style={styles.sectionTitle}>Recent Searches</Text>
-        {RECENT_ITEMS.map((item) => (
+        {RECENT_ITEMS.map(item => (
           <View key={item} style={styles.recentRow}>
             <View style={styles.clockBubble}>
               <Clock3 color="#767676" size={20} strokeWidth={2.2} />

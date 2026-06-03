@@ -42,7 +42,7 @@ import { VStack } from '@/components/ui/vstack';
 function ButtonsSection() {
   return (
     <ComponentSection title="Buttons">
-      <RNText className="text-sm font-medium text-typography-600">Variants</RNText>
+      <RNText className="font-medium text-sm text-typography-600">Variants</RNText>
       <HStack className="flex-wrap gap-2">
         <Button action="primary">
           <ButtonText>Solid</ButtonText>
@@ -55,7 +55,7 @@ function ButtonsSection() {
         </Button>
       </HStack>
 
-      <RNText className="text-sm font-medium text-typography-600">Sizes</RNText>
+      <RNText className="font-medium text-sm text-typography-600">Sizes</RNText>
       <HStack className="flex-wrap items-center gap-2">
         <Button size="xs">
           <ButtonText>XS</ButtonText>
@@ -74,7 +74,7 @@ function ButtonsSection() {
         </Button>
       </HStack>
 
-      <RNText className="text-sm font-medium text-typography-600">Actions</RNText>
+      <RNText className="font-medium text-sm text-typography-600">Actions</RNText>
       <HStack className="flex-wrap gap-2">
         <Button action="primary">
           <ButtonText>Primary</ButtonText>
@@ -90,7 +90,7 @@ function ButtonsSection() {
         </Button>
       </HStack>
 
-      <RNText className="text-sm font-medium text-typography-600">States</RNText>
+      <RNText className="font-medium text-sm text-typography-600">States</RNText>
       <HStack className="flex-wrap gap-2">
         <Button isDisabled>
           <ButtonText>Disabled</ButtonText>

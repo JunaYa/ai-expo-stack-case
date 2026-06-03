@@ -40,7 +40,7 @@ export function GlassPillTabBar({ descriptors, insets, navigation, state }: Bott
                   type: 'tabPress',
                 });
 
-                if (!focused && !event.defaultPrevented) {
+                if (!(focused || event.defaultPrevented)) {
                   navigation.navigate(route.name, route.params);
                 }
               };

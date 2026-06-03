@@ -63,12 +63,12 @@ export function GlassDemoProvider({ children }: { children: React.ReactNode }) {
       taskFilter,
       productivityScore,
       focusLevel,
-      toggleTask: (id) =>
-        setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))),
+      toggleTask: id =>
+        setTasks(prev => prev.map(t => (t.id === id ? { ...t, completed: !t.completed } : t))),
       setTaskFilter,
       setProductivityScore,
       setFocusLevel,
-      updateSettings: (patch) => setSettings((prev) => ({ ...prev, ...patch })),
+      updateSettings: patch => setSettings(prev => ({ ...prev, ...patch })),
     }),
     [tasks, settings, taskFilter, productivityScore, focusLevel],
   );

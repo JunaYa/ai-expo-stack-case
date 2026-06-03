@@ -83,20 +83,20 @@ function CardsLayoutSection() {
         </VStack>
       </Card>
 
-      <RNText className="text-sm font-medium text-typography-600">HStack / VStack</RNText>
+      <RNText className="font-medium text-sm text-typography-600">HStack / VStack</RNText>
       <HStack className="gap-2">
         <View className="h-12 flex-1 items-center justify-center rounded-md bg-primary-100">
-          <RNText className="text-xs text-primary-700">1</RNText>
+          <RNText className="text-primary-700 text-xs">1</RNText>
         </View>
         <View className="h-12 flex-1 items-center justify-center rounded-md bg-primary-100">
-          <RNText className="text-xs text-primary-700">2</RNText>
+          <RNText className="text-primary-700 text-xs">2</RNText>
         </View>
         <View className="h-12 flex-1 items-center justify-center rounded-md bg-primary-100">
-          <RNText className="text-xs text-primary-700">3</RNText>
+          <RNText className="text-primary-700 text-xs">3</RNText>
         </View>
       </HStack>
 
-      <RNText className="text-sm font-medium text-typography-600">Divider</RNText>
+      <RNText className="font-medium text-sm text-typography-600">Divider</RNText>
       <VStack className="gap-2">
         <RNText className="text-sm text-typography-700">Above</RNText>
         <Divider />
@@ -109,7 +109,7 @@ function CardsLayoutSection() {
 function MediaSection() {
   return (
     <ComponentSection title="Media">
-      <RNText className="text-sm font-medium text-typography-600">Avatar</RNText>
+      <RNText className="font-medium text-sm text-typography-600">Avatar</RNText>
       <HStack className="gap-3">
         <Avatar size="sm">
           <AvatarFallbackText>AB</AvatarFallbackText>
@@ -125,7 +125,7 @@ function MediaSection() {
         </Avatar>
       </HStack>
 
-      <RNText className="text-sm font-medium text-typography-600">Icons</RNText>
+      <RNText className="font-medium text-sm text-typography-600">Icons</RNText>
       <HStack className="flex-wrap gap-3">
         <Icon as={SunIcon} size="lg" className="text-warning-500" />
         <Icon as={MoonIcon} size="lg" className="text-primary-500" />
@@ -135,7 +135,7 @@ function MediaSection() {
         <Icon as={SearchIcon} size="lg" className="text-typography-500" />
       </HStack>
 
-      <RNText className="text-sm font-medium text-typography-600">Image</RNText>
+      <RNText className="font-medium text-sm text-typography-600">Image</RNText>
       <Image
         source={{ uri: 'https://picsum.photos/300/200' }}
         alt="Sample image"

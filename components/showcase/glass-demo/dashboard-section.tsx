@@ -51,7 +51,7 @@ function CircularGauge({
         </View>
       </View>
       <VStack className="items-center">
-        <RNText className="text-lg font-bold text-white">{Math.round(value * 100)}%</RNText>
+        <RNText className="font-bold text-lg text-white">{Math.round(value * 100)}%</RNText>
         <RNText className="text-[10px] text-white/50">{label}</RNText>
       </VStack>
     </View>
@@ -62,9 +62,9 @@ export function DashboardSection() {
   const { tasks, productivityScore, focusLevel, setProductivityScore, setFocusLevel } =
     useGlassDemo();
 
-  const completedCount = tasks.filter((t) => t.completed).length;
+  const completedCount = tasks.filter(t => t.completed).length;
   const completionRate = tasks.length > 0 ? completedCount / tasks.length : 0;
-  const highPriority = tasks.filter((t) => t.priority === 'high' && !t.completed).length;
+  const highPriority = tasks.filter(t => t.priority === 'high' && !t.completed).length;
 
   return (
     <View className="mx-4 mb-6 overflow-hidden rounded-2xl bg-white/10 p-5">
@@ -80,14 +80,14 @@ export function DashboardSection() {
 
       <HStack className="mb-6 gap-3">
         <View className="flex-1 items-center rounded-xl bg-white/10 p-3">
-          <RNText className="text-2xl font-bold text-white">
+          <RNText className="font-bold text-2xl text-white">
             {completedCount}/{tasks.length}
           </RNText>
-          <RNText className="text-xs text-white/50">Completed</RNText>
+          <RNText className="text-white/50 text-xs">Completed</RNText>
         </View>
         <View className="flex-1 items-center rounded-xl bg-white/10 p-3">
-          <RNText className="text-2xl font-bold text-red-400">{highPriority}</RNText>
-          <RNText className="text-xs text-white/50">Urgent</RNText>
+          <RNText className="font-bold text-2xl text-red-400">{highPriority}</RNText>
+          <RNText className="text-white/50 text-xs">Urgent</RNText>
         </View>
       </HStack>
 
@@ -95,7 +95,7 @@ export function DashboardSection() {
         <VStack className="gap-2">
           <HStack className="items-center justify-between">
             <RNText className="text-sm text-white/70">Productivity</RNText>
-            <RNText className="text-sm font-medium text-indigo-400">
+            <RNText className="font-medium text-indigo-400 text-sm">
               {Math.round(productivityScore * 100)}%
             </RNText>
           </HStack>
@@ -103,7 +103,7 @@ export function DashboardSection() {
             value={Math.round(productivityScore * 100)}
             minValue={0}
             maxValue={100}
-            onChange={(v) => setProductivityScore(v / 100)}
+            onChange={v => setProductivityScore(v / 100)}
           >
             <SliderTrack>
               <SliderFilledTrack />
@@ -115,7 +115,7 @@ export function DashboardSection() {
         <VStack className="gap-2">
           <HStack className="items-center justify-between">
             <RNText className="text-sm text-white/70">Focus Level</RNText>
-            <RNText className="text-sm font-medium text-purple-400">
+            <RNText className="font-medium text-purple-400 text-sm">
               {Math.round(focusLevel * 100)}%
             </RNText>
           </HStack>
@@ -123,7 +123,7 @@ export function DashboardSection() {
             value={Math.round(focusLevel * 100)}
             minValue={0}
             maxValue={100}
-            onChange={(v) => setFocusLevel(v / 100)}
+            onChange={v => setFocusLevel(v / 100)}
           >
             <SliderTrack>
               <SliderFilledTrack />

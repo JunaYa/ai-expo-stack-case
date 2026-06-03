@@ -16,9 +16,9 @@ function ThemeToggle() {
 
   return (
     <VStack className="gap-2">
-      <Text className="text-sm font-medium text-typography-600">Theme</Text>
+      <Text className="font-medium text-sm text-typography-600">Theme</Text>
       <HStack className="gap-2">
-        {modes.map((mode) => (
+        {modes.map(mode => (
           <Button
             key={mode}
             size="sm"
@@ -38,7 +38,7 @@ function StackBadges() {
   const stack = ['Expo 56', 'NativeWind v4', 'gluestack-ui v3'];
   return (
     <HStack className="flex-wrap gap-2">
-      {stack.map((item) => (
+      {stack.map(item => (
         <Badge key={item} size="lg" variant="solid" action="info">
           <BadgeText>{item}</BadgeText>
         </Badge>
@@ -71,11 +71,11 @@ export default function HomeScreen() {
         <Divider />
 
         <VStack className="gap-3">
-          <Text className="text-sm font-medium text-typography-600">Showcase Tabs</Text>
+          <Text className="font-medium text-sm text-typography-600">Showcase Tabs</Text>
           <Link href="/base" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">Base</Text>
+                <Text className="font-semibold text-base text-typography-900">Base</Text>
                 <Text className="text-sm text-typography-500">
                   Typography, badges, cards, layout &amp; media
                 </Text>
@@ -85,7 +85,7 @@ export default function HomeScreen() {
           <Link href="/forms" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">Forms</Text>
+                <Text className="font-semibold text-base text-typography-900">Forms</Text>
                 <Text className="text-sm text-typography-500">
                   Buttons, inputs &amp; form controls
                 </Text>
@@ -95,7 +95,7 @@ export default function HomeScreen() {
           <Link href="/feedback" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">Feedback</Text>
+                <Text className="font-semibold text-base text-typography-900">Feedback</Text>
                 <Text className="text-sm text-typography-500">
                   Alerts, progress, toasts &amp; loading states
                 </Text>
@@ -105,7 +105,7 @@ export default function HomeScreen() {
           <Link href="/overlays" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">Overlays</Text>
+                <Text className="font-semibold text-base text-typography-900">Overlays</Text>
                 <Text className="text-sm text-typography-500">
                   Modals, dialogs, sheets &amp; disclosure
                 </Text>
@@ -117,7 +117,7 @@ export default function HomeScreen() {
         <Divider />
 
         <VStack className="gap-3">
-          <Text className="text-sm font-medium text-typography-600">Tab Layouts</Text>
+          <Text className="font-medium text-sm text-typography-600">Tab Layouts</Text>
           <Link href="/tab-showcase" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <HStack className="items-center gap-3">
@@ -125,7 +125,7 @@ export default function HomeScreen() {
                   <BadgeText>7</BadgeText>
                 </Badge>
                 <VStack className="flex-1 gap-1">
-                  <Text className="text-base font-semibold text-typography-900">
+                  <Text className="font-semibold text-base text-typography-900">
                     Tab Layout Showcase
                   </Text>
                   <Text className="text-sm text-typography-500">
@@ -138,7 +138,7 @@ export default function HomeScreen() {
           <Link href="/modal" asChild>
             <Card size="md" variant="outline" className="active:opacity-80">
               <VStack className="gap-1">
-                <Text className="text-base font-semibold text-typography-900">Modal (Route)</Text>
+                <Text className="font-semibold text-base text-typography-900">Modal (Route)</Text>
                 <Text className="text-sm text-typography-500">
                   Native modal presentation via Expo Router
                 </Text>

@@ -62,11 +62,11 @@ function SpinnerSection() {
       <HStack className="items-center gap-6">
         <VStack className="items-center gap-1">
           <Spinner size="small" />
-          <RNText className="text-xs text-typography-500">Small</RNText>
+          <RNText className="text-typography-500 text-xs">Small</RNText>
         </VStack>
         <VStack className="items-center gap-1">
           <Spinner size="large" />
-          <RNText className="text-xs text-typography-500">Large</RNText>
+          <RNText className="text-typography-500 text-xs">Large</RNText>
         </VStack>
       </HStack>
     </ComponentSection>
@@ -79,7 +79,7 @@ function ToastSection() {
   return (
     <ComponentSection title="Toast">
       <HStack className="flex-wrap gap-2">
-        {(['success', 'error', 'warning', 'info'] as const).map((action) => (
+        {(['success', 'error', 'warning', 'info'] as const).map(action => (
           <Button
             key={action}
             size="sm"

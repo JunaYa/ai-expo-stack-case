@@ -27,16 +27,16 @@ export function ProfileSection() {
       <Divider className="my-4 bg-white/10" />
       <HStack className="justify-around">
         <VStack className="items-center gap-1">
-          <RNText className="text-2xl font-bold text-white">12</RNText>
-          <RNText className="text-xs text-white/50">Projects</RNText>
+          <RNText className="font-bold text-2xl text-white">12</RNText>
+          <RNText className="text-white/50 text-xs">Projects</RNText>
         </VStack>
         <VStack className="items-center gap-1">
-          <RNText className="text-2xl font-bold text-white">48</RNText>
-          <RNText className="text-xs text-white/50">Tasks</RNText>
+          <RNText className="font-bold text-2xl text-white">48</RNText>
+          <RNText className="text-white/50 text-xs">Tasks</RNText>
         </VStack>
         <VStack className="items-center gap-1">
-          <RNText className="text-2xl font-bold text-white">96%</RNText>
-          <RNText className="text-xs text-white/50">On Time</RNText>
+          <RNText className="font-bold text-2xl text-white">96%</RNText>
+          <RNText className="text-white/50 text-xs">On Time</RNText>
         </VStack>
       </HStack>
     </View>

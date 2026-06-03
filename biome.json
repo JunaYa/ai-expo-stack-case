@@ -1,37 +1,62 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
   "files": {
-    "includes": [
-      "app/**",
-      "components/showcase/**",
-      "constants/**",
-      "hooks/**",
-      "lib/**",
-      "*.json",
-      "*.ts"
-    ]
+    "ignoreUnknown": false,
+    "includes": ["**", "!components/ui", "!.expo", "!ios", "!android", "!dist", "!build", "!*.css"]
   },
   "formatter": {
+    "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 100
+    "lineWidth": 100,
+    "lineEnding": "lf"
   },
   "linter": {
+    "enabled": true,
     "rules": {
       "recommended": true,
       "correctness": {
-        "useExhaustiveDependencies": "warn",
-        "noUnusedImports": "warn",
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "error",
+        "noUnusedImports": "error",
+        "useExhaustiveDependencies": "error",
+        "noUndeclaredVariables": "error"
       },
       "suspicious": {
-        "noExplicitAny": "off"
+        "noExplicitAny": "warn",
+        "noArrayIndexKey": "warn",
+        "noDebugger": "warn"
       },
       "style": {
-        "noNonNullAssertion": "off"
+        "useImportType": "error",
+        "useTemplate": "error",
+        "useConst": "error",
+        "useShorthandAssign": "error",
+        "noNonNullAssertion": "off",
+        "noNegationElse": "off",
+        "noNestedTernary": "off",
+        "useBlockStatements": "off",
+        "useFilenamingConvention": "off",
+        "useCollapsedElseIf": "warn"
+      },
+      "complexity": {
+        "noUselessTernary": "error",
+        "useFlatMap": "error",
+        "useSimplifiedLogicExpression": "error",
+        "noExcessiveCognitiveComplexity": "warn"
+      },
+      "performance": {
+        "noDelete": "error"
       },
       "security": {
-        "noDangerouslySetInnerHtml": "off"
+        "noDangerouslySetInnerHtml": "error"
+      },
+      "nursery": {
+        "useSortedClasses": "error"
       }
     }
   },
@@ -39,7 +64,17 @@
     "formatter": {
       "quoteStyle": "single",
       "trailingCommas": "all",
-      "semicolons": "always"
+      "semicolons": "always",
+      "arrowParentheses": "asNeeded",
+      "bracketSpacing": true,
+      "bracketSameLine": false
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "indentWidth": 2
     }
   }
 }
