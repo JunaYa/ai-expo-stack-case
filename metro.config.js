@@ -13,32 +13,11 @@ const localBottomTabs = path.resolve(
 );
 
 config.watchFolders = [...(config.watchFolders || []), localScreens, localBottomTabs];
-
-// App's node_modules always takes priority
 config.resolver.nodeModulesPaths = [appNodeModules];
 
 const prevResolveRequest = config.resolver.resolveRequest;
 
 config.resolver.resolveRequest = (context, moduleName, platform) => {
-  const origin = context.originModulePath || '';
-  const isFromSubmodule = origin.startsWith(localScreens) || origin.startsWith(localBottomTabs);
-
-  // When resolving FROM submodule source, force shared deps to the app's copies
-  if (isFromSubmodule) {
-    if (
-      moduleName === 'react' ||
-      moduleName === 'react-native' ||
-      moduleName.startsWith('react/') ||
-      moduleName.startsWith('react-native/')
-    ) {
-      return context.resolveRequest(
-        { ...context, nodeModulesPaths: [appNodeModules] },
-        moduleName,
-        platform,
-      );
-    }
-  }
-
   // Redirect package imports to local source
   if (moduleName === 'react-native-screens') {
     return context.resolveRequest(context, `${localScreens}/src/index`, platform);
