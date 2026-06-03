@@ -55,12 +55,6 @@ const layouts = [
     desc: 'Floating glass tab pill with a separate action button',
     badge: 'Glass',
   },
-  {
-    href: '/tab-showcase/bottom-tabs',
-    title: 'Bottom Tabs + Search',
-    desc: 'react-native-bottom-tabs with role="search" pill',
-    badge: 'Search',
-  },
 ] as const;
 
 export default function TabShowcaseIndex() {
