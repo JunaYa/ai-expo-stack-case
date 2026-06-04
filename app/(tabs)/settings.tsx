@@ -507,9 +507,10 @@ export default function SettingsScreen() {
         <View
           style={{
             backgroundColor: colors.segBg,
-            borderRadius: currentRadius,
+            borderRadius: 8,
             flexDirection: 'row',
-            padding: 3,
+            paddingHorizontal: 12,
+            paddingVertical: 10,
           }}
         >
           {TEXT_SIZES.map(s => {
@@ -519,20 +520,14 @@ export default function SettingsScreen() {
                 key={s.value}
                 onPress={() => setTextSize(s.value)}
                 style={({ pressed }) => ({
-                  alignItems: 'center',
-                  backgroundColor: selected ? colors.segActive : 'transparent',
-                  borderRadius: Math.max(currentRadius - 3, 0),
-                  boxShadow: selected ? '0 1px 3px rgba(0,0,0,0.12)' : 'none',
-                  flex: 1,
-                  opacity: pressed ? 0.7 : 1,
-                  paddingVertical: 10,
+                  opacity: pressed ? 0.5 : 1,
                 })}
               >
                 <Text
                   style={{
-                    color: selected ? colors.text : colors.textSecondary,
-                    fontSize: 14,
-                    fontWeight: selected ? '600' : '400',
+                    color: selected ? colors.text : colors.textMuted,
+                    fontSize: 15,
+                    fontWeight: selected ? '700' : '400',
                   }}
                 >
                   {s.label}
