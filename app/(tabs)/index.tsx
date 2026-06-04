@@ -1,39 +1,12 @@
 import { Link } from 'expo-router';
-import { useColorScheme } from 'nativewind';
 import { ScrollView, Text } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Badge, BadgeText } from '@/components/ui/badge';
-import { Button, ButtonText } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Divider } from '@/components/ui/divider';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
 import { VStack } from '@/components/ui/vstack';
-
-function ThemeToggle() {
-  const { colorScheme, setColorScheme } = useColorScheme();
-
-  const modes = ['light', 'dark', 'system'] as const;
-
-  return (
-    <VStack className="gap-2">
-      <Text className="font-medium text-sm text-typography-600">Theme</Text>
-      <HStack className="gap-2">
-        {modes.map(mode => (
-          <Button
-            key={mode}
-            size="sm"
-            variant={colorScheme === mode ? 'solid' : 'outline'}
-            action="primary"
-            onPress={() => setColorScheme(mode)}
-          >
-            <ButtonText className="capitalize">{mode}</ButtonText>
-          </Button>
-        ))}
-      </HStack>
-    </VStack>
-  );
-}
 
 function StackBadges() {
   const stack = ['Expo 56', 'NativeWind v4', 'gluestack-ui v3'];
@@ -67,10 +40,6 @@ export default function HomeScreen() {
         </VStack>
 
         <StackBadges />
-
-        <Divider />
-
-        <ThemeToggle />
 
         <Divider />
 
