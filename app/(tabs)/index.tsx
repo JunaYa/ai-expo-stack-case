@@ -140,6 +140,25 @@ export default function HomeScreen() {
             </Card>
           </Link>
         </VStack>
+        <Divider />
+
+        <VStack className="gap-3">
+          <Link href="/about" asChild>
+            <Card size="md" variant="outline" className="active:opacity-80">
+              <HStack className="items-center gap-3">
+                <Badge size="lg" action="info" variant="outline">
+                  <BadgeText>i</BadgeText>
+                </Badge>
+                <VStack className="flex-1 gap-1">
+                  <Text className="font-semibold text-base text-typography-900">About</Text>
+                  <Text className="text-sm text-typography-500">
+                    Tech stack, libraries &amp; versions
+                  </Text>
+                </VStack>
+              </HStack>
+            </Card>
+          </Link>
+        </VStack>
       </VStack>
     </ScrollView>
   );
