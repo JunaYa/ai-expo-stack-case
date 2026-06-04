@@ -7,6 +7,7 @@ module.exports = {
     './utils/**/*.{html,js,jsx,ts,tsx,mdx}',
     './*.{html,js,jsx,ts,tsx,mdx}',
     './src/**/*.{html,js,jsx,ts,tsx,mdx}',
+    './.rnstorybook/**/*.{js,jsx,ts,tsx}',
   ],
   presets: [require('nativewind/preset')],
   important: 'html',
