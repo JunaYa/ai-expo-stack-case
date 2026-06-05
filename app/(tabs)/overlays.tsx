@@ -1,4 +1,11 @@
 import {
+  Host as AndroidHost,
+  Icon as ComposeIcon,
+  Text as ComposeText,
+  DropdownMenu,
+  DropdownMenuItem,
+} from '@expo/ui/jetpack-compose';
+import {
   ContextMenu,
   Host,
   Section,
@@ -7,7 +14,8 @@ import {
   Text as SwiftText,
 } from '@expo/ui/swift-ui';
 import { useState } from 'react';
-import { Platform, ScrollView, View } from 'react-native';
+import { Platform, Pressable, ScrollView, View } from 'react-native';
+import ContextMenuView from 'react-native-context-menu-view';
 import { ComponentSection } from '@/components/showcase/component-section';
 import {
   Accordion,
@@ -226,23 +234,12 @@ function AccordionSection() {
   );
 }
 
-function ContextMenuSection() {
-  if (Platform.OS !== 'ios') {
-    return (
-      <ComponentSection title="Context Menu (iOS)">
-        <Text size="sm" className="text-typography-500">
-          ContextMenu is only available on iOS.
-        </Text>
-      </ComponentSection>
-    );
-  }
-
+function IOSContextMenuSection() {
   return (
-    <ComponentSection title="Context Menu (iOS)">
+    <ComponentSection title="Context Menu — iOS (SwiftUI)">
       <Text size="sm" className="mb-2 text-typography-500">
-        Long press the cards below to see native context menus.
+        Long press to trigger native UIMenu via @expo/ui.
       </Text>
-
       <VStack className="gap-4">
         <Host matchContents>
           <ContextMenu>
@@ -284,29 +281,125 @@ function ContextMenuSection() {
             </ContextMenu.Trigger>
           </ContextMenu>
         </Host>
-
-        <Host matchContents>
-          <ContextMenu>
-            <ContextMenu.Items>
-              <SwiftButton label="Copy" systemImage="doc.on.clipboard" onPress={() => {}} />
-              <ContextMenu>
-                <ContextMenu.Items>
-                  <SwiftButton label="Twitter" systemImage="link" onPress={() => {}} />
-                  <SwiftButton label="Messages" systemImage="message" onPress={() => {}} />
-                  <SwiftButton label="Email" systemImage="envelope" onPress={() => {}} />
-                </ContextMenu.Items>
-                <ContextMenu.Trigger>
-                  <SwiftButton label="Share..." systemImage="square.and.arrow.up" />
-                </ContextMenu.Trigger>
-              </ContextMenu>
-            </ContextMenu.Items>
-            <ContextMenu.Trigger>
-              <SwiftText>Nested Submenu — Long press</SwiftText>
-            </ContextMenu.Trigger>
-          </ContextMenu>
-        </Host>
       </VStack>
     </ComponentSection>
+  );
+}
+
+function AndroidDropdownMenuSection() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <ComponentSection title="Dropdown Menu — Android (Jetpack Compose)">
+      <Text size="sm" className="mb-2 text-typography-500">
+        Long press to open Material 3 DropdownMenu via @expo/ui.
+      </Text>
+      <Pressable onLongPress={() => setExpanded(true)}>
+        <View className="rounded-xl bg-background-50 px-4 py-3">
+          <Text size="md" className="font-semibold text-typography-900">
+            Long press for menu
+          </Text>
+          <Text size="sm" className="text-typography-500">
+            Material 3 DropdownMenu
+          </Text>
+        </View>
+      </Pressable>
+      <AndroidHost style={{ position: 'absolute' }}>
+        <DropdownMenu expanded={expanded} onDismissRequest={() => setExpanded(false)}>
+          <DropdownMenu.Items>
+            <DropdownMenuItem onClick={() => setExpanded(false)}>
+              <DropdownMenuItem.LeadingIcon>
+                <ComposeIcon name="share" />
+              </DropdownMenuItem.LeadingIcon>
+              <DropdownMenuItem.Text>
+                <ComposeText>Share</ComposeText>
+              </DropdownMenuItem.Text>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setExpanded(false)}>
+              <DropdownMenuItem.LeadingIcon>
+                <ComposeIcon name="favorite" />
+              </DropdownMenuItem.LeadingIcon>
+              <DropdownMenuItem.Text>
+                <ComposeText>Favorite</ComposeText>
+              </DropdownMenuItem.Text>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setExpanded(false)}>
+              <DropdownMenuItem.LeadingIcon>
+                <ComposeIcon name="delete" />
+              </DropdownMenuItem.LeadingIcon>
+              <DropdownMenuItem.Text>
+                <ComposeText>Delete</ComposeText>
+              </DropdownMenuItem.Text>
+            </DropdownMenuItem>
+          </DropdownMenu.Items>
+        </DropdownMenu>
+      </AndroidHost>
+    </ComponentSection>
+  );
+}
+
+function CrossPlatformContextMenuSection() {
+  return (
+    <ComponentSection title="Context Menu — Cross-Platform">
+      <Text size="sm" className="mb-2 text-typography-500">
+        Long press to trigger native menu on both platforms via react-native-context-menu-view.
+      </Text>
+      <VStack className="gap-4">
+        <ContextMenuView
+          actions={[
+            { title: 'Share', systemIcon: 'square.and.arrow.up' },
+            { title: 'Favorite', systemIcon: 'heart' },
+            { title: 'Delete', systemIcon: 'trash', destructive: true },
+          ]}
+          onPress={() => {}}
+        >
+          <View className="rounded-xl bg-background-50 px-4 py-3">
+            <Text size="md" className="font-semibold text-typography-900">
+              Basic Actions
+            </Text>
+            <Text size="sm" className="text-typography-500">
+              Long press — iOS UIMenu / Android PopupMenu
+            </Text>
+          </View>
+        </ContextMenuView>
+
+        <ContextMenuView
+          actions={[
+            { title: 'Edit', systemIcon: 'pencil' },
+            { title: 'Duplicate', systemIcon: 'doc.on.doc' },
+            {
+              title: 'Share...',
+              systemIcon: 'square.and.arrow.up',
+              actions: [{ title: 'Twitter' }, { title: 'Messages' }, { title: 'Email' }],
+            },
+            { title: 'Delete', systemIcon: 'trash', destructive: true },
+          ]}
+          onPress={() => {}}
+        >
+          <View className="rounded-xl bg-background-50 px-4 py-3">
+            <Text size="md" className="font-semibold text-typography-900">
+              Nested Submenu
+            </Text>
+            <Text size="sm" className="text-typography-500">
+              Long press — with child actions
+            </Text>
+          </View>
+        </ContextMenuView>
+      </VStack>
+    </ComponentSection>
+  );
+}
+
+function ContextMenuShowcase() {
+  const isIOS = Platform.OS === 'ios';
+  const isAndroid = Platform.OS === 'android';
+
+  return (
+    <>
+      {isIOS && <IOSContextMenuSection />}
+      {isAndroid && <AndroidDropdownMenuSection />}
+      <CrossPlatformContextMenuSection />
+    </>
   );
 }
 
@@ -341,7 +434,7 @@ export default function OverlaysScreen() {
       <AlertDialogSection />
       <TooltipSection />
       <ActionsheetSection />
-      <ContextMenuSection />
+      <ContextMenuShowcase />
       <AccordionSection />
       <FabSection />
     </ScrollView>
