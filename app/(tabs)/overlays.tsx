@@ -1,5 +1,13 @@
+import {
+  ContextMenu,
+  Host,
+  Section,
+  Button as SwiftButton,
+  Divider as SwiftDivider,
+  Text as SwiftText,
+} from '@expo/ui/swift-ui';
 import { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Platform, ScrollView, View } from 'react-native';
 import { ComponentSection } from '@/components/showcase/component-section';
 import {
   Accordion,
@@ -218,6 +226,90 @@ function AccordionSection() {
   );
 }
 
+function ContextMenuSection() {
+  if (Platform.OS !== 'ios') {
+    return (
+      <ComponentSection title="Context Menu (iOS)">
+        <Text size="sm" className="text-typography-500">
+          ContextMenu is only available on iOS.
+        </Text>
+      </ComponentSection>
+    );
+  }
+
+  return (
+    <ComponentSection title="Context Menu (iOS)">
+      <Text size="sm" className="mb-2 text-typography-500">
+        Long press the cards below to see native context menus.
+      </Text>
+
+      <VStack className="gap-4">
+        <Host matchContents>
+          <ContextMenu>
+            <ContextMenu.Items>
+              <SwiftButton label="Share" systemImage="square.and.arrow.up" onPress={() => {}} />
+              <SwiftButton label="Favorite" systemImage="heart" onPress={() => {}} />
+              {/* biome-ignore lint/a11y/useValidAriaRole: SwiftUI prop, not ARIA */}
+              <SwiftButton
+                label="Delete"
+                systemImage="trash"
+                role="destructive"
+                onPress={() => {}}
+              />
+            </ContextMenu.Items>
+            <ContextMenu.Trigger>
+              <SwiftText>With System Icons — Long press</SwiftText>
+            </ContextMenu.Trigger>
+          </ContextMenu>
+        </Host>
+
+        <Host matchContents>
+          <ContextMenu>
+            <ContextMenu.Items>
+              <Section title="Actions">
+                <SwiftButton label="Edit" systemImage="pencil" onPress={() => {}} />
+                <SwiftButton label="Duplicate" systemImage="doc.on.doc" onPress={() => {}} />
+              </Section>
+              <SwiftDivider />
+              {/* biome-ignore lint/a11y/useValidAriaRole: SwiftUI prop, not ARIA */}
+              <SwiftButton
+                label="Delete"
+                systemImage="trash"
+                role="destructive"
+                onPress={() => {}}
+              />
+            </ContextMenu.Items>
+            <ContextMenu.Trigger>
+              <SwiftText>With Sections — Long press</SwiftText>
+            </ContextMenu.Trigger>
+          </ContextMenu>
+        </Host>
+
+        <Host matchContents>
+          <ContextMenu>
+            <ContextMenu.Items>
+              <SwiftButton label="Copy" systemImage="doc.on.clipboard" onPress={() => {}} />
+              <ContextMenu>
+                <ContextMenu.Items>
+                  <SwiftButton label="Twitter" systemImage="link" onPress={() => {}} />
+                  <SwiftButton label="Messages" systemImage="message" onPress={() => {}} />
+                  <SwiftButton label="Email" systemImage="envelope" onPress={() => {}} />
+                </ContextMenu.Items>
+                <ContextMenu.Trigger>
+                  <SwiftButton label="Share..." systemImage="square.and.arrow.up" />
+                </ContextMenu.Trigger>
+              </ContextMenu>
+            </ContextMenu.Items>
+            <ContextMenu.Trigger>
+              <SwiftText>Nested Submenu — Long press</SwiftText>
+            </ContextMenu.Trigger>
+          </ContextMenu>
+        </Host>
+      </VStack>
+    </ComponentSection>
+  );
+}
+
 function FabSection() {
   return (
     <ComponentSection title="FAB">
@@ -249,6 +341,7 @@ export default function OverlaysScreen() {
       <AlertDialogSection />
       <TooltipSection />
       <ActionsheetSection />
+      <ContextMenuSection />
       <AccordionSection />
       <FabSection />
     </ScrollView>
