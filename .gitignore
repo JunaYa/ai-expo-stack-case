@@ -42,3 +42,6 @@ yarn-error.*
 
 # Storybook
 .rnstorybook/storybook.requires.ts
+
+# Codegen
+generated/

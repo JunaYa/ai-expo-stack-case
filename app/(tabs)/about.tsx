@@ -1,103 +1,156 @@
 import Constants from 'expo-constants';
+import { useColorScheme } from 'nativewind';
+import React from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-const SECTIONS: { title: string; items: { name: string; version: string; desc: string }[] }[] = [
+import { versions } from '@/generated/versions';
+
+function useColors() {
+  const { colorScheme } = useColorScheme();
+  const dark = colorScheme === 'dark';
+  return {
+    bg: dark ? '#111' : '#fff',
+    card: dark ? '#1c1c1e' : '#f9fafb',
+    cardBorder: dark ? '#333' : '#e5e7eb',
+    text: dark ? '#f5f5f5' : '#111827',
+    textSecondary: dark ? '#9ca3af' : '#6b7280',
+    textMuted: dark ? '#6b7280' : '#9ca3af',
+    accent: '#6366f1',
+    separator: dark ? '#333' : '#e5e7eb',
+  };
+}
+
+type Item = { name: string; pkg: string; desc: string };
+type Section = { title: string; items: Item[] };
+
+const SECTIONS: Section[] = [
   {
     title: 'Core',
     items: [
-      { name: 'Expo', version: '56', desc: 'Universal app platform' },
-      { name: 'React Native', version: '0.85', desc: 'Cross-platform UI framework' },
-      { name: 'React', version: '19', desc: 'UI rendering library' },
-      { name: 'TypeScript', version: '6.0', desc: 'Type-safe JavaScript' },
+      { name: 'Expo', pkg: 'expo', desc: 'Universal app platform' },
+      { name: 'React Native', pkg: 'react-native', desc: 'Cross-platform UI framework' },
+      { name: 'React', pkg: 'react', desc: 'UI rendering library' },
+      { name: 'TypeScript', pkg: 'typescript', desc: 'Type-safe JavaScript' },
     ],
   },
   {
     title: 'Routing',
     items: [
-      { name: 'Expo Router', version: '56', desc: 'File-based navigation' },
-      { name: 'react-native-screens', version: '4.25', desc: 'Native screen containers' },
+      { name: 'Expo Router', pkg: 'expo-router', desc: 'File-based navigation' },
+      {
+        name: 'react-native-screens',
+        pkg: 'react-native-screens',
+        desc: 'Native screen containers',
+      },
     ],
   },
   {
     title: 'UI & Styling',
     items: [
-      { name: 'gluestack-ui', version: '3.0', desc: '58+ accessible components' },
-      { name: 'NativeWind', version: '4.2', desc: 'Tailwind CSS for React Native' },
-      { name: 'Tailwind CSS', version: '3.4', desc: 'Utility-first CSS framework' },
-      { name: '@expo/ui', version: '56', desc: 'Native MenuView, SegmentedControl' },
-      { name: 'tailwind-variants', version: '0.1', desc: 'Variant-based styling' },
+      { name: 'gluestack-ui', pkg: '@gluestack-ui/core', desc: '58+ accessible components' },
+      { name: 'NativeWind', pkg: 'nativewind', desc: 'Tailwind CSS for React Native' },
+      { name: 'Tailwind CSS', pkg: 'tailwindcss', desc: 'Utility-first CSS framework' },
+      { name: '@expo/ui', pkg: '@expo/ui', desc: 'Native MenuView, SegmentedControl' },
+      { name: 'tailwind-variants', pkg: 'tailwind-variants', desc: 'Variant-based styling' },
     ],
   },
   {
     title: 'Icons & Symbols',
     items: [
-      { name: 'expo-symbols', version: '56', desc: 'SF Symbols cross-platform' },
-      { name: 'lucide-react-native', version: '0.510', desc: 'Open source icon set' },
+      { name: 'expo-symbols', pkg: 'expo-symbols', desc: 'SF Symbols cross-platform' },
+      { name: 'lucide-react-native', pkg: 'lucide-react-native', desc: 'Open source icon set' },
     ],
   },
   {
     title: 'Effects & Animation',
     items: [
-      { name: 'expo-glass-effect', version: '56', desc: 'iOS 26 Liquid Glass' },
-      { name: 'expo-blur', version: '56', desc: 'Native blur views' },
-      { name: 'react-native-reanimated', version: '4.3', desc: 'Worklet-based animations' },
-      { name: '@legendapp/motion', version: '2.4', desc: 'Declarative animations' },
+      { name: 'expo-glass-effect', pkg: 'expo-glass-effect', desc: 'iOS 26 Liquid Glass' },
+      { name: 'expo-blur', pkg: 'expo-blur', desc: 'Native blur views' },
+      {
+        name: 'react-native-reanimated',
+        pkg: 'react-native-reanimated',
+        desc: 'Worklet-based animations',
+      },
+      { name: '@legendapp/motion', pkg: '@legendapp/motion', desc: 'Declarative animations' },
     ],
   },
   {
     title: 'Accessibility',
     items: [
-      { name: 'react-aria', version: '3.49', desc: 'Accessible UI primitives' },
-      { name: 'react-stately', version: '3.47', desc: 'State management for UI' },
+      { name: 'react-aria', pkg: 'react-aria', desc: 'Accessible UI primitives' },
+      { name: 'react-stately', pkg: 'react-stately', desc: 'State management for UI' },
     ],
   },
   {
     title: 'Tooling',
     items: [
-      { name: 'Biome', version: '2.4', desc: 'Lint + format in one tool' },
-      { name: 'simple-git-hooks', version: '2.13', desc: 'Git hooks manager' },
-      { name: 'lint-staged', version: '17.0', desc: 'Run checks on staged files' },
+      { name: 'Biome', pkg: '@biomejs/biome', desc: 'Lint + format in one tool' },
+      { name: 'simple-git-hooks', pkg: 'simple-git-hooks', desc: 'Git hooks manager' },
+      { name: 'lint-staged', pkg: 'lint-staged', desc: 'Run checks on staged files' },
     ],
   },
 ];
 
+type Colors = ReturnType<typeof useColors>;
+
+const LibRow = React.memo(function LibRow({
+  item,
+  isFirst,
+  colors,
+}: {
+  item: Item;
+  isFirst: boolean;
+  colors: Colors;
+}) {
+  return (
+    <>
+      {!isFirst && <View style={[styles.separator, { backgroundColor: colors.separator }]} />}
+      <View style={styles.row}>
+        <View style={styles.rowLeft}>
+          <Text style={[styles.libName, { color: colors.text }]}>{item.name}</Text>
+          <Text style={[styles.libDesc, { color: colors.textMuted }]}>{item.desc}</Text>
+        </View>
+        <Text style={[styles.libVersion, { color: colors.accent }]}>
+          {versions[item.pkg] ?? '?'}
+        </Text>
+      </View>
+    </>
+  );
+});
+
 export default function AboutScreen() {
   const insets = useSafeAreaInsets();
+  const colors = useColors();
   const appVersion = Constants.expoConfig?.version ?? '1.0.0';
   const sdkVersion = Constants.expoConfig?.sdkVersion ?? '56';
 
   return (
     <ScrollView
-      style={styles.root}
+      style={[styles.root, { backgroundColor: colors.bg }]}
       contentContainerStyle={[styles.content, { paddingBottom: insets.bottom + 40 }]}
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.header}>
-        <Text style={styles.appName}>Expo Stack App</Text>
-        <Text style={styles.appVersion}>
+        <Text style={[styles.appName, { color: colors.text }]}>Expo Stack App</Text>
+        <Text style={[styles.appVersion, { color: colors.textMuted }]}>
           v{appVersion} · SDK {sdkVersion}
         </Text>
-        <Text style={styles.appDesc}>
+        <Text style={[styles.appDesc, { color: colors.textSecondary }]}>
           UI showcase with copy-ready AI prompts for rapid implementation
         </Text>
       </View>
 
       {SECTIONS.map(section => (
         <View key={section.title} style={styles.section}>
-          <Text style={styles.sectionTitle}>{section.title}</Text>
-          <View style={styles.card}>
+          <Text style={[styles.sectionTitle, { color: colors.textSecondary }]}>
+            {section.title}
+          </Text>
+          <View
+            style={[styles.card, { backgroundColor: colors.card, borderColor: colors.cardBorder }]}
+          >
             {section.items.map((item, i) => (
-              <View key={item.name}>
-                {i > 0 ? <View style={styles.separator} /> : null}
-                <View style={styles.row}>
-                  <View style={styles.rowLeft}>
-                    <Text style={styles.libName}>{item.name}</Text>
-                    <Text style={styles.libDesc}>{item.desc}</Text>
-                  </View>
-                  <Text style={styles.libVersion}>{item.version}</Text>
-                </View>
-              </View>
+              <LibRow key={item.pkg} item={item} isFirst={i === 0} colors={colors} />
             ))}
           </View>
         </View>
@@ -108,24 +161,19 @@ export default function AboutScreen() {
 
 const styles = StyleSheet.create({
   appDesc: {
-    color: '#6b7280',
     fontSize: 14,
     lineHeight: 20,
     textAlign: 'center',
   },
   appName: {
-    color: '#111827',
     fontSize: 24,
     fontWeight: '800',
   },
   appVersion: {
-    color: '#9ca3af',
     fontSize: 13,
     fontWeight: '500',
   },
   card: {
-    backgroundColor: '#f9fafb',
-    borderColor: '#e5e7eb',
     borderRadius: 12,
     borderWidth: 1,
     overflow: 'hidden',
@@ -142,21 +190,17 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
   libDesc: {
-    color: '#9ca3af',
     fontSize: 12,
   },
   libName: {
-    color: '#111827',
     fontSize: 15,
     fontWeight: '600',
   },
   libVersion: {
-    color: '#6366f1',
     fontSize: 14,
     fontWeight: '700',
   },
   root: {
-    backgroundColor: '#fff',
     flex: 1,
   },
   row: {
@@ -174,7 +218,6 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   sectionTitle: {
-    color: '#6b7280',
     fontSize: 13,
     fontWeight: '600',
     letterSpacing: 0.5,
@@ -182,7 +225,6 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   separator: {
-    backgroundColor: '#e5e7eb',
     height: StyleSheet.hairlineWidth,
     marginHorizontal: 16,
   },
