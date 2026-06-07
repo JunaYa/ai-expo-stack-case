@@ -18,15 +18,15 @@ export default function GlassTabsLayout() {
       >
         <NativeTabs.Trigger name="home">
           <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-          <NativeTabs.Trigger.Icon sf="house.fill" drawable="home" />
+          <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
         </NativeTabs.Trigger>
         <NativeTabs.Trigger name="search">
           <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
-          <NativeTabs.Trigger.Icon sf="magnifyingglass" drawable="search" />
+          <NativeTabs.Trigger.Icon sf="magnifyingglass" md="search" />
         </NativeTabs.Trigger>
         <NativeTabs.Trigger name="profile">
           <NativeTabs.Trigger.Label>Profile</NativeTabs.Trigger.Label>
-          <NativeTabs.Trigger.Icon sf="person.fill" drawable="person" />
+          <NativeTabs.Trigger.Icon sf="person.fill" md="person" />
         </NativeTabs.Trigger>
       </NativeTabs>
 
