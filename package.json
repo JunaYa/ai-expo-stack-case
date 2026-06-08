@@ -5,6 +5,7 @@
   "dependencies": {
     "@expo/html-elements": "^0.12.5",
     "@expo/ui": "^56.0.15",
+    "@faker-js/faker": "^10.4.0",
     "@gluestack-ui/core": "^3.0.22",
     "@gluestack-ui/utils": "^3.0.21",
     "@gorhom/bottom-sheet": "^5.2.14",

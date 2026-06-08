@@ -14,14 +14,7 @@ type SortOption = 'recent' | 'date' | 'title';
 type FilterOption = 'all' | 'favorites' | 'edited' | 'photos' | 'videos' | 'screenshots' | 'shared';
 type ViewOption = { showScreenshots: boolean; showShared: boolean };
 
-const ALBUMS = [
-  { title: 'Recents', count: 1284, color: '#3478f6' },
-  { title: 'Favorites', count: 42, color: '#ff3b30' },
-  { title: 'Nature', count: 86, color: '#34c759' },
-  { title: 'Travel', count: 215, color: '#ff9500' },
-  { title: 'Architecture', count: 63, color: '#af52de' },
-  { title: 'Portraits', count: 128, color: '#ff2d55' },
-];
+import { albums as ALBUMS } from '@/mocks/glass-pill/albums.mock';
 
 function buildMenuActions(
   sort: SortOption,
@@ -168,7 +161,7 @@ export default function AlbumsScreen() {
 
         <View style={styles.grid}>
           {ALBUMS.map(album => (
-            <View key={album.title} style={styles.albumCard}>
+            <View key={album.id} style={styles.albumCard}>
               <View style={[styles.albumCover, { backgroundColor: album.color }]}>
                 <SymbolView name="photo.on.rectangle" tintColor="rgba(255,255,255,0.7)" size={32} />
               </View>

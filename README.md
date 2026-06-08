@@ -22,10 +22,11 @@ A showcase app built with Expo SDK 56 for browsing UI components, tab layouts, a
 
 ## Showcases
 
-### Tab Layouts (8 variants)
+### Independent Cases
 
-| Layout | Pattern | AI Prompt |
-|--------|---------|-----------|
+| Case | Pattern | AI Prompt |
+|------|---------|-----------|
+| Photos Gallery | Floating glass gallery with albums | `Create a floating glass Photos Gallery using NativeTabs with albums, contacts, article, search, MenuView actions, and minimizeBehavior="automatic"` |
 | 2 Tabs | Minimal home + profile | `Create a 2-tab Expo Router layout with home and profile tabs using SF Symbols` |
 | 3 Tabs | Home, search, profile | `Create a 3-tab bottom navigation with Expo Router Tabs` |
 | 4 Tabs | + notifications | `Create a 4-tab layout with home, search, notifications, and profile` |
@@ -33,7 +34,6 @@ A showcase app built with Expo SDK 56 for browsing UI components, tab layouts, a
 | 1+3+1 Center FAB | Elevated center action button | `Create a 5-tab layout with a raised center FAB button using negative margin (-mt-6)` |
 | 2+1+2 Split Center | Symmetric with prominent center | `Create a split-center tab bar with 2 tabs on each side and an oversized center button` |
 | Glass Effect | Native blur tab bar | `Create iOS glass tab bar using NativeTabs from expo-router/unstable-native-tabs with blurEffect systemChromeMaterial` |
-| Glass Pill + Action | Floating pill with search | `Create a floating glass pill tab bar using NativeTabs with role="search" for a separate search pill, minimizeBehavior="automatic"` |
 
 ### UI Components (4 categories, 58+ components)
 
@@ -75,7 +75,8 @@ pnpm lint:fix
 ```
 app/
   (tabs)/            # Main app tabs (Home, Base, Forms, Feedback, Overlays)
-  tab-showcase/      # 8 tab layout variants
+  showcase/          # Independent showcase cases
+    (glass-pill)/    # Photos Gallery: Albums (MenuView), Search (SegmentedControl)
     (two-tabs)/
     (three-tabs)/
     (four-tabs)/
@@ -83,7 +84,6 @@ app/
     (center-fab)/
     (split-center)/
     (glass-tabs)/
-    (glass-pill)/    # Albums (MenuView), Search (SegmentedControl)
   modal.tsx          # Modal presentation example
 components/
   ui/                # 58+ gluestack-ui components

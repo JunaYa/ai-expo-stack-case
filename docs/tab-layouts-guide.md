@@ -327,7 +327,7 @@ app/
     _layout.tsx                  # Tabs layout
     index.tsx
     settings.tsx
-  tab-showcase/                  # Tab 布局展示（二级页面）
+  showcase/                      # Showcase cases（二级页面）
     _layout.tsx                  # Stack 包装
     index.tsx                    # 布局列表
     (two-tabs)/
@@ -347,16 +347,16 @@ Root layout 注册所有一级路由：
 // app/_layout.tsx
 <Stack>
   <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-  <Stack.Screen name="tab-showcase" options={{ headerShown: false }} />
+  <Stack.Screen name="showcase" options={{ headerShown: false }} />
 </Stack>
 ```
 
-Tab showcase stack 注册每个变体：
+Showcase stack 注册每个变体：
 
 ```tsx
-// app/tab-showcase/_layout.tsx
+// app/showcase/_layout.tsx
 <Stack>
-  <Stack.Screen name="index" options={{ title: 'Tab Layouts' }} />
+  <Stack.Screen name="index" options={{ title: 'Showcase' }} />
   <Stack.Screen name="(two-tabs)" options={{ headerShown: false }} />
   <Stack.Screen name="(glass-tabs)" options={{ headerShown: false }} />
 </Stack>

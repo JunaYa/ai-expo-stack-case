@@ -4,18 +4,12 @@ import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import {
+  recentSearches as RECENT_SEARCHES,
+  searchSuggestions as SUGGESTIONS,
+} from '@/mocks/glass-pill/photos.mock';
+
 type Segment = 'photos' | 'collections';
-
-const SUGGESTIONS = [
-  { label: 'Nature', icon: 'leaf.fill' as const, color: '#34c759' },
-  { label: 'Travel', icon: 'airplane' as const, color: '#ff9500' },
-  { label: 'Food', icon: 'fork.knife' as const, color: '#ff3b30' },
-  { label: 'Pets', icon: 'pawprint.fill' as const, color: '#af52de' },
-  { label: 'Selfies', icon: 'person.crop.circle' as const, color: '#ff2d55' },
-  { label: 'Screenshots', icon: 'camera.viewfinder' as const, color: '#5856d6' },
-];
-
-const RECENT_SEARCHES = ['Sunset', 'Beach', 'Mountains', 'City skyline'];
 
 export default function SearchScreen() {
   const [segment, setSegment] = useState<Segment>('photos');
@@ -47,7 +41,7 @@ export default function SearchScreen() {
                 {SUGGESTIONS.map(item => (
                   <View key={item.label} style={styles.suggestionCard}>
                     <View style={[styles.suggestionIcon, { backgroundColor: item.color }]}>
-                      <SymbolView name={item.icon} tintColor="#fff" size={20} />
+                      <SymbolView name={item.sfIcon} tintColor="#fff" size={20} />
                     </View>
                     <Text style={styles.suggestionLabel} numberOfLines={1}>
                       {item.label}

@@ -22,10 +22,11 @@
 
 ## Showcase
 
-### Tab 布局 (8 种变体)
+### 独立 Case
 
-| 布局 | 说明 | AI Prompt |
+| Case | 说明 | AI Prompt |
 |------|------|-----------|
+| Photos Gallery | 浮动玻璃图库与相册 | `使用 NativeTabs 创建浮动玻璃 Photos Gallery，包含 albums、contacts、article、search、MenuView 操作，并设置 minimizeBehavior="automatic"` |
 | 2 Tabs | 极简 home + profile | `使用 Expo Router 创建 2 个 Tab 的布局，使用 SF Symbols 图标` |
 | 3 Tabs | home, search, profile | `使用 Expo Router Tabs 创建 3 个 Tab 的底部导航` |
 | 4 Tabs | + notifications | `创建包含 home、search、notifications、profile 的 4 Tab 布局` |
@@ -33,7 +34,6 @@
 | 1+3+1 中心 FAB | 凸起的中心操作按钮 | `创建 5 Tab 布局，中间放一个使用 negative margin (-mt-6) 凸起的 FAB 按钮` |
 | 2+1+2 对称分割 | 对称布局，中心突出 | `创建对称分割 Tab 栏，左右各 2 个 Tab，中间放一个大号按钮` |
 | 玻璃效果 | 原生模糊 Tab 栏 | `使用 expo-router/unstable-native-tabs 的 NativeTabs 创建 iOS 玻璃 Tab 栏，设置 blurEffect 为 systemChromeMaterial` |
-| 玻璃药丸 + 操作 | 浮动药丸 + 搜索 | `使用 NativeTabs 创建浮动玻璃药丸 Tab 栏，搜索按钮使用 role="search" 独立显示，设置 minimizeBehavior="automatic"` |
 
 ### UI 组件 (4 大类, 58+ 组件)
 
@@ -75,7 +75,8 @@ pnpm lint:fix
 ```
 app/
   (tabs)/            # 主应用 Tab（首页、基础、表单、反馈、浮层）
-  tab-showcase/      # 8 种 Tab 布局变体
+  showcase/          # 独立 Showcase cases
+    (glass-pill)/    # Photos Gallery: Albums (MenuView), Search (SegmentedControl)
     (two-tabs)/
     (three-tabs)/
     (four-tabs)/
@@ -83,7 +84,6 @@ app/
     (center-fab)/
     (split-center)/
     (glass-tabs)/
-    (glass-pill)/    # Albums (MenuView), Search (SegmentedControl)
   modal.tsx          # Modal 展示
 components/
   ui/                # 58+ gluestack-ui 组件

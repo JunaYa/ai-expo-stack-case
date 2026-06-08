@@ -1,6 +1,9 @@
 import { Clock3 } from 'lucide-react-native';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { favoriteCount, onlineCount } from '@/mocks/glass-pill/contacts.mock';
+import { photos } from '@/mocks/glass-pill/photos.mock';
+
 type GlassPillDemoScreenProps = {
   variant: 'article' | 'contacts' | 'albums';
 };
@@ -11,7 +14,7 @@ const SCREEN_COPY = {
     title: 'Where does it come from?',
     subtitle:
       'A reading surface designed so the floating glass controls pick up the page underneath.',
-    primary: 'Serif samples',
+    primary: `${photos.length} photos`,
     secondary: 'Layout notes',
   },
   contacts: {
@@ -19,8 +22,8 @@ const SCREEN_COPY = {
     title: 'Creative contacts',
     subtitle:
       'Quickly move between people, notes, and context while the controls stay close at hand.',
-    primary: '18 online',
-    secondary: '4 favorites',
+    primary: `${onlineCount} online`,
+    secondary: `${favoriteCount} favorites`,
   },
   albums: {
     eyebrow: 'Library',

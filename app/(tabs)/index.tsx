@@ -111,19 +111,17 @@ export default function HomeScreen() {
         <Divider />
 
         <VStack className="gap-3">
-          <Text className="font-medium text-sm text-typography-600">Tab Layouts</Text>
-          <Link href="/tab-showcase" asChild>
+          <Text className="font-medium text-sm text-typography-600">Showcase</Text>
+          <Link href="/showcase" asChild>
             <Card size="md" variant="elevated" className="active:opacity-80">
               <HStack className="items-center gap-3">
                 <Badge size="lg" action="success" variant="solid">
-                  <BadgeText>7</BadgeText>
+                  <BadgeText>8</BadgeText>
                 </Badge>
                 <VStack className="flex-1 gap-1">
-                  <Text className="font-semibold text-base text-typography-900">
-                    Tab Layout Showcase
-                  </Text>
+                  <Text className="font-semibold text-base text-typography-900">Showcase</Text>
                   <Text className="text-sm text-typography-500">
-                    2/3/4/5 tabs, center FAB, split center, iOS glass effect
+                    Independent UI cases including Photos Gallery and tab patterns
                   </Text>
                 </VStack>
               </HStack>
